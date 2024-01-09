@@ -32,3 +32,257 @@ input[type=text], select {
   input[type=submit]:hover {
     background-color: #45a049;
   }
+  .coupons {
+    font-size: 16px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 350px;
+    padding: 0px;
+    margin: 0px;
+    cursor: pointer;
+    border: 2px dotted #4a463d;
+    border-radius: 10px 0 0 10px;
+    color: #161718;
+    background-color: #fff; 
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 100px 100px 100px 100px;
+    background-color: rgb(243, 204, 153);
+  }
+  
+  .coupons > * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+  }
+  
+  ul,
+li {
+  list-style: none;
+  padding: 0; 
+  margin: 0;
+}
+.otpbutton {
+  background-color: #4a463d;
+  height: 44px;
+  margin-left: 10px;
+  color: #ffffff;
+  margin-bottom: 10px;
+  width: 13%;
+}
+
+.otpbutton:hover{
+  background-color: #4a463d;
+}
+
+@media only screen and (max-width: 600px) {
+  .otpbutton {
+    margin-left: 10px;
+    width: 40%;
+    font-size: 8px;
+    background-color: #4a463d;
+
+  }
+}
+
+.errormessage{
+  color: red;
+  margin-top: 5px;
+}
+.inputboxes{
+  width: 100%;
+  height: 45px;
+  margin-bottom: 10px;
+}
+.successmessage{
+  color: green;
+}
+
+.container {
+  background-color: rgb(243, 204, 153);
+  padding: 10px;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: #ffffff;
+  height: 400px;
+  width: 70%;
+}
+
+.container::-webkit-scrollbar {
+  width: 5px;
+}
+.container::-webkit-scrollbar-track {
+  background: #b9a6fe;
+}
+.container::-webkit-scrollbar-thumb {
+  width: 3px;
+  background: #b9a6fe;
+  border-radius: 6px;
+}
+.container::-webkit-scrollbar-thumb:hover {
+  background: #b9a6fe;
+}
+
+.container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.container::-webkit-scrollbar-track {
+  background: gray;
+}
+
+.container::-webkit-scrollbar-thumb {
+  background: #b9a6fe;
+}
+
+.container::-webkit-scrollbar-thumb:hover {
+  background: #000000;
+}
+
+.container {
+  scrollbar-width: thin;
+  scrollbar-color: #f1f1f1 #888;
+}
+
+.container:hover {
+  scrollbar-color: #f1f1f1 #555;
+}
+
+.container1 {
+  position: relative;
+  width: 120px;
+  height: 80px;
+  border-radius: 10px;
+  background: linear-gradient(
+    to top left,
+    #eaf5fd 50%,
+    #afc2f7 50%
+  );
+}
+@media only screen and (max-width: 540px) {
+.container{
+width: 100%;
+}
+ .container1{
+  width: 100px;
+  height: 60px;
+
+ }
+ 
+}
+@media screen and (max-width:400px) {
+  .container1{
+    width: 120px;
+    height: 60px;
+  }
+  
+}
+
+.triangle {
+  position: absolute;
+  width: 0;
+  height: 0;
+  clip-path: polygon(0% 0%, 100% 0%, 0% 100%);
+  z-index: 3;
+}
+
+.text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  color:black;
+  font-weight: bold;
+}
+
+.item-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.image-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.checkbox {
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+}
+
+.image {
+  width: 150px;
+  height: 100px;
+  margin: 0 10px;
+}
+
+.button{
+  cursor: pointer;
+  background-color:#4a463d;
+  border: none;
+  color:black;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 4px;
+}
+.title{
+margin: 0px;
+}
+span{
+  text-decoration: underline;
+  font-weight: bold
+}
+
+.inputfiled{
+  width: 100%;
+}
+.inputfield{
+  width: 278px;
+  height: 42px;
+  margin-bottom: 30px;
+}
+.optinputfield{
+  width: 355px;
+  height: 42px;
+  margin-bottom: 30px;
+  
+}
+.textcolor{
+  color: #4a463d;
+  
+}
+.title{
+  padding: 0px;
+  margin: 10px;
+  
+}
+
+.coupon {
+  font-size: 16px;
+  margin-top: 0px !important;
+
+  color: #4a463d;
+  margin-bottom: 0px !important;
+}
+
+.validcoupon{
+  margin-top: 0px !important;
+  margin-bottom:0px !important;
+  font-size: 14px;
+}
+
+@media only screen and (max-width: 600px) {
+ .coupon{
+  font-size: 12px;
+ }
+  
+ }

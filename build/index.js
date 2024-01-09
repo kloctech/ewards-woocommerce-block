@@ -136,7 +136,7 @@ const save = props => {
     "data-mt-attributes": JSON.stringify(props.attributes)
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "mt-block-user-card"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", null, "TEST SAVE")));
+  }));
 };
 const edit = props => {
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
