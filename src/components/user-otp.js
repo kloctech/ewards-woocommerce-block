@@ -2,7 +2,6 @@ import '../style.scss';
 
 
 import Sendotp from './send-otp';
-import Coupons from './availblecoupns';
 export default function MyButton() {
 
     const onSubmit = async(e) =>{
@@ -18,7 +17,6 @@ export default function MyButton() {
 
                 <Button className='components-button wc-block-components-button wp-element-button submit-button' type='sumbit' >Click Me!</Button> */}
                 <Sendotp/>
-                <Coupons/>
 
             </form>
         </>
