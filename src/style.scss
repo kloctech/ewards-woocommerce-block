@@ -1,43 +1,77 @@
-input[type=text], select {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
+// input[type=text], select {
+//     width: 100%;
+//     padding: 12px 20px;
+//     margin: 8px 0;
+//     display: inline-block;
+//     border: 1px solid #ccc;
+//     border-radius: 4px;
+//     box-sizing: border-box;
+//   }
 
-  input[type=number], select {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
+//   input[type=number], select {
+//     width: 100%;
+//     padding: 12px 20px;
+//     margin: 8px 0;
+//     display: inline-block;
+//     border: 1px solid #ccc;
+//     border-radius: 4px;
+//     box-sizing: border-box;
+//   }
   
-  input[type=submit] {
-    width: 100%;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
+//   input[type=submit] {
+//     width: 100%;
+//     background-color: #4CAF50;
+//     color: white;
+//     padding: 14px 20px;
+//     margin: 8px 0;
+//     border: none;
+//     border-radius: 4px;
+//     cursor: pointer;
+//   }
   
-  input[type=submit]:hover {
-    background-color: #45a049;
+//   input[type=submit]:hover {
+//     background-color: #45a049;
+//   }
+
+$margin-Top:"10px";
+$margin-Bottom:"20px";
+@mixin marginBottom($marginBottom){
+  margin-Bottom:$marginBottom;
+}
+@mixin alignment{
+ margin-top: 32px;
+ text-align: center;
+}
+.mobile-otp-container{
+  display: flex;
+  align-items: center;
+}
+.select--control-container{
+  @include alignment()
+}
+.selectcontrol{
+  width: 100%;
+  height: 4.2em;
+  @include marginBottom(20px);
+
+  text-align: center;
+}
+@media screen and (max-width:375px){
+ 
+  .selectcontrol{
+    height: 4.1em;
   }
-  .coupons {
+}
+.otp-send-button{
+  margin-left: 8px;
+  margin-top: 20px;
+  height: 2em;
+}
+.available-balance-container{
     font-size: 16px;
     text-decoration: none;
     display: flex;
     flex-direction: column;
-    // align-items: center;
     text-align: center;
     justify-content: center;
     width: 350px;
@@ -51,25 +85,22 @@ input[type=text], select {
     transition: background-color 0.3s, color 0.3s;
     border-radius: 100px 100px 100px 100px;
     background-color: rgb(243, 204, 153);
-    margin-top: 0px;
-    margin-bottom: 0px;
-  }
+    
   
-  .coupons > * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box; 
-  }
-  .availblepointsmarging{
-    margin-top: 0px;
-    margin-bottom: 0px;
-   }
-  ul,
-li {
-  list-style: none;
-  padding: 0; 
-  margin: 0;
 }
+.availble-points-container{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 0px;
+  margin-top: 0px;
+}
+  .availblepointsmarging{
+  
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-left: 10px;
+   }
+  
 .otpbutton {
   background-color: #4a463d;
   height: 44px;
@@ -106,20 +137,15 @@ li {
   }
 }
 
-.errormessage{
-  color: red;
-  margin-top: 5px;
-}
+
 .inputboxes{
   width: 100%;
   height: 45px;
   margin-bottom: 10px;
 }
-.successmessage{
-  color: green;
-}
 
-.container {
+
+.tokes-rewards-coupons-container {
   background-color:#ffffff;
   padding: 10px;
   overflow-y: scroll;
@@ -129,43 +155,43 @@ li {
   width: 70%;
 }
 
-.container::-webkit-scrollbar { 
+.tokes-rewards-coupons-container::-webkit-scrollbar { 
   width: 5px;
 }
-.container::-webkit-scrollbar-track {
+.containertokes-rewards-coupons-container::-webkit-scrollbar-track {
   background: #161518;
 }
-.container::-webkit-scrollbar-thumb {
+.tokes-rewards-coupons-container::-webkit-scrollbar-thumb {
   width: 3px;
   background: #2c2938;
   border-radius: 6px;
 }
-.container::-webkit-scrollbar-thumb:hover {
+.tokes-rewards-coupons-container::-webkit-scrollbar-thumb:hover {
   background: #070708;
 }
 
-.container::-webkit-scrollbar {
+.tokes-rewards-coupons-container::-webkit-scrollbar {
   width: 8px;
 }
 
-.container::-webkit-scrollbar-track {
+.tokes-rewards-coupons-container::-webkit-scrollbar-track {
   background: gray;
 }
 
-.container::-webkit-scrollbar-thumb {
+.tokes-rewards-coupons-container::-webkit-scrollbar-thumb {
   background: #131216;
 }
 
-.container::-webkit-scrollbar-thumb:hover {
+.tokes-rewards-coupons-container::-webkit-scrollbar-thumb:hover {
   background: #d3c1c1;
 }
 
-.container {
+.tokes-rewards-coupons-container {
   scrollbar-width: thin;
   scrollbar-color: #f1f1f1 #888;
 }
 
-.container:hover {
+.tokes-rewards-coupons-container:hover {
   scrollbar-color: #f1f1f1 #555;
 }
 
@@ -197,6 +223,10 @@ li {
   font-size: 16px;
   color:black;
   font-weight: bold;
+}
+.points-redem-container{
+  display: flex;
+  justify-content: end;
 }
 @media screen and (max-width:280px){
 
@@ -245,7 +275,7 @@ li {
 .title{
 margin: 0px;
 }
-span{
+.resend-otp-text{
   text-decoration: underline;
   font-weight: bold
 }
@@ -280,7 +310,7 @@ span{
   .textcolor{
    font-size: 16px
   }
-  .coupons{
+  .available-balance-container{
     width: 310px;
   }
   .resendotptext{
@@ -288,7 +318,7 @@ span{
   }
 }
 @media screen and (max-width:280px){
-  .coupons{
+  .available-balance-container{
     width: 230px;
   }
 }
@@ -346,7 +376,7 @@ input[type=number] {
 .topnav {
   background-color: #333;
   overflow: hidden;
-  width: 70%;
+  width: 71.5%;
 }
 @media screen  and (max-width:540px){
   .topnav{
@@ -396,8 +426,8 @@ input[type=number] {
   100% { transform: rotate(360deg); }
 }
 @media only screen and (max-width: 540px) {
-  .container{
-  width: 100%;
+  .tokes-rewards-coupons-container{
+  width: 95%;
   }
    .container1{
     width: 80px;
@@ -437,4 +467,5 @@ input[type=number] {
     }
     
   }
-   
+ 
+  

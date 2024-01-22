@@ -3,16 +3,19 @@ import { Button, SelectControl, TextControl } from '@wordpress/components';
 import axios from 'axios';
 import CountryCodes1 from '../countires.json';
 
-import Coupons from './Availblecoupns';
+import Coupons from './availble-coupons';
 
 const SendOtp = () => {
-  const [mobile, setMobileNumber] = useState('');
+   const [mobile, setMobileNumber] = useState('');
   const [selectedCountry, setSelectedCountry] = useState("+91");
-  const [error, setError] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
+  const [otpsucmsg, setotpsucmsg] = useState('');
+  const [opterrmsg,setotperror] =  useState('')
+  const [verifyotpsusmsg,setverifyotpsucmsg]= useState('')
+  const [verifyotperrmsg,setverifyotperrmsg] =  useState('')
   const [isFrozen, setFrozen] = useState(false);
   const [otp, setOtp] = useState('');
-  const [showCoupons, setShowCoupons] = useState(false); // New state
+  const [showCoupons, setShowCoupons] = useState(false); 
+  const [error,setError] =useState('')
 
   const rewardsData = [
     { title: "Coupon 1", date: "Valid: 12th June 2024", discount: "25% Off", id: "1" },
@@ -39,7 +42,8 @@ const SendOtp = () => {
     setSelectedCountry(selectedValue);
   };
 
-  const handleMobileNumberChange = (value) => {
+  const handleMobileNumberChange = (event) => {
+    const value = event.target.value;
     if (value && value.length > 10) {
       setError('Mobile number must be 10 digits.');
     } else {
@@ -47,6 +51,7 @@ const SendOtp = () => {
       setMobileNumber(value);
     }
   };
+  
 
   const sendOtpRequest = () => {
     if (!isFrozen && selectedCountry && mobile) {
@@ -60,13 +65,13 @@ const SendOtp = () => {
           console.log(response);
           setSuccessMessage(response.message);
           setError('');
+          setotpsucmsg(response.message)
+          
           setFrozen(true);
         })
         .catch((error) => {
-          console.error(error);
-          setError(error.message);
-          setSuccessMessage('');
           setFrozen(false);
+          setotperror(error.message)
         });
     }
   };
@@ -82,79 +87,84 @@ const SendOtp = () => {
       axios.post('/verifyotp', requestData)
         .then((response) => {
           console.log(response);
-          setSuccessMessage(response.message);
-          setError('');
+          setverifyotpsucmsg(response.message)
+          setverifyotperrmsg("")
+          setShowCoupons(true); // Set showCoupons to true on successful verification
         })
         .catch((error) => {
           console.error(error);
-          setError(error.message);
-          setSuccessMessage('');
-          setShowCoupons(true); // Set showCoupons to true on successful verification
-
+          setverifyotperrmsg(error.message)
+          setShowCoupons(true); // Ensure showCoupons is false on verification failure
+          setverifyotpsucmsg("")
+          console.log(error.message)
         });
     }
   };
 
-  const handleOtpChange = (value) => {
+  const handleOtpChange = (event) => {
+    const value = event.target.value;
+
     setOtp(value);
   };
 
   const handleResendClick = () => {
     console.log('Resend OTP clicked');
   };
-
   return (
     <>
-      <div>
-      <div style={{ display: 'flex', alignItems: 'center' }}>
-  <SelectControl
-    value={selectedCountry}
-    options={CountryCodes}
-    onChange={handleCountryChange}
-    style={{ width: '70%', marginBottom: '10px', marginLeft: '20px',height:'25px' }}
-    disabled={isFrozen}
-  />
-
-          <TextControl
-            type="number"
+      <div>       
+      <div className='mobile-otp-container'>
+        <div className='select--control-container'>
+        <SelectControl
+            value={selectedCountry}
+            options={CountryCodes}
+            onChange={handleCountryChange}
+            className='selectcontrol'
+            disabled={isFrozen}
+          />
+          </div>
+        
+          <div class="wc-block-components-text-input wc-block-components-totals-coupon__input">
+            <input type="number"
             placeholder="Enter your phone number"
             value={mobile}
+            aria-label="Enter code"
             onChange={handleMobileNumberChange}
-            disabled={isFrozen}
-            className='inputfield'
-          />
-    <Button className='otpbutton' onClick={sendOtpRequest} disabled={isFrozen}>
-            Receive OTP
-          </Button>
-          
-        </div>
-        
-        {error && <p className="errormessage">{error}</p>}
-        {successMessage && <p className="successmessage">{successMessage}</p>}
-      </div>
+            disabled={isFrozen}/>
+            </div>
+            <button onClick={sendOtpRequest}  
+            class="wc-block-components-button wp-element-button otp-send-button" style={{height:"3em"}}><span class="">Receive OTP</span>
+            </button>
+            </div>
+            
+          {error && <p class='wc-block-components-validation-error'>{error}</p>}
+          {opterrmsg && <p class="wc-block-components-validation-error">{opterrmsg}</p>}
+        {otpsucmsg && <p className="successmessage">{otpsucmsg}</p>}
+         </div>
 
-      {error && (
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          <TextControl
-            type='text'           
-            className='optinputfield'
+             {opterrmsg &&  (
+              <div className='mobile-otp-container'>
+               <div class="wc-block-components-text-input wc-block-components-totals-coupon__input is-active">
+                      <input type="text"
+                       placeholder="Enter your phone number"
             value={otp}
             onChange={handleOtpChange}
-          />
-          <Button className="otpbutton" onClick={verifyOtp} disabled={isFrozen}>
-            Verify OTP
-          </Button>
-        </div>
+            disabled={isFrozen}/>
+            </div>
+            <button style={{height:"3em"}} onClick={verifyOtp} class="wc-block-components-button wp-element-button otp-send-button">
+              <span class="" >Verify OTP</span>
+              </button>
+            </div>
+        
       )}
-
-      {error && (
+      {verifyotperrmsg && (
         <p className='resendotptext'>
           Don't Receive an OTP on your mobile?{' '}
-          <span onClick={handleResendClick}>Resend OTP</span>
+          <span className ='resend-otp-text'onClick={handleResendClick}>Resend OTP</span>
         </p>
       )}
 
-      {showCoupons && error && <Coupons rewardsData={rewardsData} tokensData={tokensData} />}
+      {showCoupons && verifyotperrmsg &&  <Coupons rewardsData={rewardsData} tokensData={tokensData} />}
     </>
   );
 };

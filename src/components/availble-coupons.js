@@ -11,6 +11,8 @@ const Loader = () => (
 const Coupons = ({ rewardsData, tokensData }) => {
   const [coupon, setCoupon] = useState("");
   const [activeLink, setActiveLink] = useState("REWARDS");
+  const [couponPoints,SetCouponPoints] = useState("")
+  const [couponCode,setCouponCode] = useState("")
   const [isLoading, setIsLoading] = useState(true);
   const [selectedReward, setSelectedReward] = useState(null);
   const [selectedToken, setSelectedToken] = useState(null);
@@ -35,6 +37,8 @@ const Coupons = ({ rewardsData, tokensData }) => {
   const onButtonClick = (value) => {
     console.log(value);
     setCoupon(value);
+    setCouponCode(value)
+    SetCouponPoints(value)
   };
 
   const handlerewards = () => {
@@ -54,7 +58,14 @@ const Coupons = ({ rewardsData, tokensData }) => {
   const handleTokenSelection = (index) => {
     setSelectedToken(index);
   };
-
+const handleCouponcode = (event) =>{
+  setCoupon(event.target.value)
+  setCouponCode(event.target.value)
+}
+const hanldeCoupons =  (event) =>{
+  setCoupon(event.target.value)
+  SetCouponPoints(event.target.value)
+}
   return (
     <div>
       {isLoading ? (
@@ -65,24 +76,31 @@ const Coupons = ({ rewardsData, tokensData }) => {
           <p>(value of each point is 10)</p>         
           <div >
             </div> 
-            <div className="coupons">
-              <div style={{ display: "flex", justifyContent: "space-around" }}>
-                <p style={{ display: "inline-block", margin: "0", textAlign: "center" }}>Available Balance:</p>
+            <div className="available-balance-container">
+              <div  className="availble-points-container" >
+                <p  className="availblepointsmarging">Available Balance:</p>
                 <p> 100</p>
               </div>
-              <div style={{ display: "flex", justifyContent: "space-around" }}>
-                <p style={{ display: "inline-block", margin: "0", textAlign: "center" }}>Redeemable Balance:</p>
+              <div  className="availble-points-container">
+                <p  className="availblepointsmarging">Redeemable Balance:</p>
                 <p>80</p>
               </div>
              
             </div>
-            <div style={{ display: "flex", justifyContent: "end",marginBottom:"20px" }}>
-            <TextControl type="text" value={coupon} />
-            <Button className="otpbutton" style={{ fontSize: "12px", marginTop: "10px" }}>
-              Credit Redemption
-            </Button>
-          </div>
-          <h5 >Choose/Enter Your loyalty coupon code here</h5>
+            <div className="points-redem-container">
+         
+         <div class="wc-block-components-text-input wc-block-components-totals-coupon__input is-active">
+           <input type="text"
+           onChange={hanldeCoupons }
+           value={couponPoints}
+          />
+           </div>
+           <button  style={{height:"3em"}} class="wc-block-components-button wp-element-button otp-send-button">
+            <span class="wc-block-components-button__text">Credit Redemption</span>
+            </button>
+         </div>
+          
+          <h5 style={{ fontWeight: "bold" }}>Choose/Enter Your loyalty coupon code here</h5>
           <div className="topnav">
             <a className={activeLink === "REWARDS" ? "active" : ""} onClick={handlerewards}>
               REWARDS
@@ -93,7 +111,7 @@ const Coupons = ({ rewardsData, tokensData }) => {
           </div>
 
           {activeLink === "REWARDS" ? (
-            <div className="container">
+            <div className="tokes-rewards-coupons-container">
               {rewardsData.map((item, index) => (
                 <div key={index} className="item-row">
                   <div className="image-container">
@@ -118,14 +136,14 @@ const Coupons = ({ rewardsData, tokensData }) => {
                     <h4 className="coupon">{item.title}</h4>
                     <p className="validcoupon">{item.date}</p>
                   </div>
-                  <Button class="otpbutton" onClick={() => onButtonClick(item.title)}>
+                  <Button className="otpbutton" onClick={() => onButtonClick(item.title)}>
                     Apply
                   </Button>
                 </div>
               ))}
             </div>
           ) : activeLink === "TOKENS" ? (
-            <div className="container">
+            <div className="tokes-rewards-coupons-container">
               {tokensData.map((item, index) => (
                 <div key={index} className="item-row">
                   <div className="image-container">
@@ -160,12 +178,18 @@ const Coupons = ({ rewardsData, tokensData }) => {
             <p>No data found</p>
           )}
 
-          <div style={{ display: "flex", justifyContent: "end" }}>
-            <TextControl type="text" value={coupon} />
-            <Button className="otpbutton" style={{ fontSize: "12px", marginTop: "10px" }}>
-              Enter Coupon Code
-            </Button>
-          </div>
+        <div className="points-redem-container">
+         
+         <div class="wc-block-components-text-input wc-block-components-totals-coupon__input is-active">
+           <input type="text"
+           value={couponCode}
+           onChange={handleCouponcode}
+          />
+           </div>
+           <button  style={{height:"3em"}} class="wc-block-components-button wp-element-button otp-send-button">
+            <span class="wc-block-components-button__text">Credit Redemption</span>
+            </button>
+         </div>
         </>
       )}
     </div>

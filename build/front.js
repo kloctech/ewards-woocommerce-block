@@ -2,10 +2,10 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/components/Availblecoupns.js":
-/*!******************************************!*\
-  !*** ./src/components/Availblecoupns.js ***!
-  \******************************************/
+/***/ "./src/components/availble-coupons.js":
+/*!********************************************!*\
+  !*** ./src/components/availble-coupons.js ***!
+  \********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -32,6 +32,8 @@ const Coupons = ({
 }) => {
   const [coupon, setCoupon] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
   const [activeLink, setActiveLink] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("REWARDS");
+  const [couponPoints, SetCouponPoints] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
+  const [couponCode, setCouponCode] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
   const [isLoading, setIsLoading] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
   const [selectedReward, setSelectedReward] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
   const [selectedToken, setSelectedToken] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
@@ -62,6 +64,8 @@ const Coupons = ({
   const onButtonClick = value => {
     console.log(value);
     setCoupon(value);
+    setCouponCode(value);
+    SetCouponPoints(value);
   };
   const handlerewards = () => {
     console.log("hello wchow");
@@ -77,50 +81,48 @@ const Coupons = ({
   const handleTokenSelection = index => {
     setSelectedToken(index);
   };
+  const handleCouponcode = event => {
+    setCoupon(event.target.value);
+    setCouponCode(event.target.value);
+  };
+  const hanldeCoupons = event => {
+    setCoupon(event.target.value);
+    SetCouponPoints(event.target.value);
+  };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, isLoading ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Loader, null) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h5", {
     style: {
       fontWeight: "bold"
     }
   }, "Redeem your Loyalty points here"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "(value of each point is 10)"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "coupons"
+    className: "available-balance-container"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    style: {
-      display: "flex",
-      justifyContent: "space-around"
-    }
+    className: "availble-points-container"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    style: {
-      display: "inline-block",
-      margin: "0",
-      textAlign: "center"
-    }
+    className: "availblepointsmarging"
   }, "Available Balance:"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, " 100")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    style: {
-      display: "flex",
-      justifyContent: "space-around"
-    }
+    className: "availble-points-container"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    style: {
-      display: "inline-block",
-      margin: "0",
-      textAlign: "center"
-    }
+    className: "availblepointsmarging"
   }, "Redeemable Balance:"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "80"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    style: {
-      display: "flex",
-      justifyContent: "end",
-      marginBottom: "20px"
-    }
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextControl, {
+    className: "points-redem-container"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    class: "wc-block-components-text-input wc-block-components-totals-coupon__input is-active"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "text",
-    value: coupon
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
-    className: "otpbutton",
+    onChange: hanldeCoupons,
+    value: couponPoints
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     style: {
-      fontSize: "12px",
-      marginTop: "10px"
+      height: "3em"
+    },
+    class: "wc-block-components-button wp-element-button otp-send-button"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    class: "wc-block-components-button__text"
+  }, "Credit Redemption"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h5", {
+    style: {
+      fontWeight: "bold"
     }
-  }, "Credit Redemption")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h5", null, "Choose/Enter Your loyalty coupon code here"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, "Choose/Enter Your loyalty coupon code here"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "topnav"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     className: activeLink === "REWARDS" ? "active" : "",
@@ -129,7 +131,7 @@ const Coupons = ({
     className: activeLink === "TOKENS" ? "active" : "",
     onClick: handlerTokens
   }, "TOKENS")), activeLink === "REWARDS" ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "container"
+    className: "tokes-rewards-coupons-container"
   }, rewardsData.map((item, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     key: index,
     className: "item-row"
@@ -157,10 +159,10 @@ const Coupons = ({
   }, item.title), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "validcoupon"
   }, item.date)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
-    class: "otpbutton",
+    className: "otpbutton",
     onClick: () => onButtonClick(item.title)
   }, "Apply")))) : activeLink === "TOKENS" ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "container"
+    className: "tokes-rewards-coupons-container"
   }, tokensData.map((item, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     key: index,
     className: "item-row"
@@ -191,20 +193,21 @@ const Coupons = ({
     className: "otpbutton",
     onClick: () => onButtonClick(item.title)
   }, "Apply")))) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "No data found"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    style: {
-      display: "flex",
-      justifyContent: "end"
-    }
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextControl, {
+    className: "points-redem-container"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    class: "wc-block-components-text-input wc-block-components-totals-coupon__input is-active"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "text",
-    value: coupon
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
-    className: "otpbutton",
+    value: couponCode,
+    onChange: handleCouponcode
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     style: {
-      fontSize: "12px",
-      marginTop: "10px"
-    }
-  }, "Enter Coupon Code"))));
+      height: "3em"
+    },
+    class: "wc-block-components-button wp-element-button otp-send-button"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    class: "wc-block-components-button__text"
+  }, "Credit Redemption")))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Coupons);
 
@@ -226,7 +229,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
 /* harmony import */ var _countires_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../countires.json */ "./src/countires.json");
-/* harmony import */ var _Availblecoupns__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Availblecoupns */ "./src/components/Availblecoupns.js");
+/* harmony import */ var _availble_coupons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./availble-coupons */ "./src/components/availble-coupons.js");
 
 
 
@@ -236,12 +239,14 @@ __webpack_require__.r(__webpack_exports__);
 const SendOtp = () => {
   const [mobile, setMobileNumber] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
   const [selectedCountry, setSelectedCountry] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("+91");
-  const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
-  const [successMessage, setSuccessMessage] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+  const [otpsucmsg, setotpsucmsg] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+  const [opterrmsg, setotperror] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+  const [verifyotpsusmsg, setverifyotpsucmsg] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+  const [verifyotperrmsg, setverifyotperrmsg] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
   const [isFrozen, setFrozen] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [otp, setOtp] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
-  const [showCoupons, setShowCoupons] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false); // New state
-
+  const [showCoupons, setShowCoupons] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
   const rewardsData = [{
     title: "Coupon 1",
     date: "Valid: 12th June 2024",
@@ -301,7 +306,8 @@ const SendOtp = () => {
   const handleCountryChange = selectedValue => {
     setSelectedCountry(selectedValue);
   };
-  const handleMobileNumberChange = value => {
+  const handleMobileNumberChange = event => {
+    const value = event.target.value;
     if (value && value.length > 10) {
       setError('Mobile number must be 10 digits.');
     } else {
@@ -319,12 +325,11 @@ const SendOtp = () => {
         console.log(response);
         setSuccessMessage(response.message);
         setError('');
+        setotpsucmsg(response.message);
         setFrozen(true);
       }).catch(error => {
-        console.error(error);
-        setError(error.message);
-        setSuccessMessage('');
         setFrozen(false);
+        setotperror(error.message);
       });
     }
   };
@@ -337,72 +342,82 @@ const SendOtp = () => {
       };
       axios__WEBPACK_IMPORTED_MODULE_4__["default"].post('/verifyotp', requestData).then(response => {
         console.log(response);
-        setSuccessMessage(response.message);
-        setError('');
+        setverifyotpsucmsg(response.message);
+        setverifyotperrmsg("");
+        setShowCoupons(true); // Set showCoupons to true on successful verification
       }).catch(error => {
         console.error(error);
-        setError(error.message);
-        setSuccessMessage('');
-        setShowCoupons(true); // Set showCoupons to true on successful verification
+        setverifyotperrmsg(error.message);
+        setShowCoupons(true); // Ensure showCoupons is false on verification failure
+        setverifyotpsucmsg("");
+        console.log(error.message);
       });
     }
   };
-  const handleOtpChange = value => {
+  const handleOtpChange = event => {
+    const value = event.target.value;
     setOtp(value);
   };
   const handleResendClick = () => {
     console.log('Resend OTP clicked');
   };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    style: {
-      display: 'flex',
-      alignItems: 'center'
-    }
+    className: "mobile-otp-container"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "select--control-container"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.SelectControl, {
     value: selectedCountry,
     options: CountryCodes,
     onChange: handleCountryChange,
-    style: {
-      width: '70%',
-      marginBottom: '10px',
-      marginLeft: '20px',
-      height: '25px'
-    },
+    className: "selectcontrol",
     disabled: isFrozen
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextControl, {
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    class: "wc-block-components-text-input wc-block-components-totals-coupon__input"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "number",
     placeholder: "Enter your phone number",
     value: mobile,
+    "aria-label": "Enter code",
     onChange: handleMobileNumberChange,
-    disabled: isFrozen,
-    className: "inputfield"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
-    className: "otpbutton",
+    disabled: isFrozen
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     onClick: sendOtpRequest,
-    disabled: isFrozen
-  }, "Receive OTP")), error && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    className: "errormessage"
-  }, error), successMessage && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    className: "successmessage"
-  }, successMessage)), error && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    class: "wc-block-components-button wp-element-button otp-send-button",
     style: {
-      display: 'flex',
-      alignItems: 'center'
+      height: "3em"
     }
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextControl, {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    class: ""
+  }, "Receive OTP"))), error && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    class: "wc-block-components-validation-error"
+  }, error), opterrmsg && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    class: "wc-block-components-validation-error"
+  }, opterrmsg), otpsucmsg && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    className: "successmessage"
+  }, otpsucmsg)), opterrmsg && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "mobile-otp-container"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    class: "wc-block-components-text-input wc-block-components-totals-coupon__input is-active"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "text",
-    className: "optinputfield",
+    placeholder: "Enter your phone number",
     value: otp,
-    onChange: handleOtpChange
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
-    className: "otpbutton",
-    onClick: verifyOtp,
+    onChange: handleOtpChange,
     disabled: isFrozen
-  }, "Verify OTP")), error && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    style: {
+      height: "3em"
+    },
+    onClick: verifyOtp,
+    class: "wc-block-components-button wp-element-button otp-send-button"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    class: ""
+  }, "Verify OTP"))), verifyotperrmsg && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "resendotptext"
   }, "Don't Receive an OTP on your mobile?", ' ', (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "resend-otp-text",
     onClick: handleResendClick
-  }, "Resend OTP")), showCoupons && error && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Availblecoupns__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }, "Resend OTP")), showCoupons && verifyotperrmsg && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_availble_coupons__WEBPACK_IMPORTED_MODULE_3__["default"], {
     rewardsData: rewardsData,
     tokensData: tokensData
   }));
