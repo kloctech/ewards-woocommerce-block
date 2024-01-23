@@ -110,30 +110,29 @@ const SendOtp = () => {
   const handleResendClick = () => {
     console.log('Resend OTP clicked');
   };
+  console.log(selectedCountry)
   return (
     <>
       <div>       
       <div className='mobile-otp-container'>
-        <div className='select--control-container'>
-        <SelectControl
-            value={selectedCountry}
-            options={CountryCodes}
-            onChange={handleCountryChange}
-            className='selectcontrol'
-            disabled={isFrozen}
-          />
-          </div>
-        
-          <div class="wc-block-components-text-input wc-block-components-totals-coupon__input">
-            <input type="number"
-            placeholder="Enter your phone number"
+      <div class="wc-block-components-text-input wc-block-components-totals-coupon__input selectcontrol">
+           <input 
+              type='text'
+              value={selectedCountry}
+              options={CountryCodes}
+              onChange={handleCountryChange}
+                // className='selectcontrol'
+              disabled={isFrozen}/>    
+         </div>
+           <div class="wc-block-components-text-input wc-block-components-totals-coupon__input is-active">
+           <input type="number"
             value={mobile}
             aria-label="Enter code"
             onChange={handleMobileNumberChange}
-            disabled={isFrozen}/>
-            </div>
+            disabled={isFrozen}/>            
+            <label for="wc-block-components-totals-coupon__input-0">Phone Number</label></div>
             <button onClick={sendOtpRequest}  
-            class="wc-block-components-button wp-element-button otp-send-button" style={{height:"3em"}}><span class="">Receive OTP</span>
+            class="wc-block-components-button wp-element-button otp-send-button" ><span class="">Receive OTP</span>
             </button>
             </div>
             
@@ -144,14 +143,13 @@ const SendOtp = () => {
 
              {opterrmsg &&  (
               <div className='mobile-otp-container'>
-               <div class="wc-block-components-text-input wc-block-components-totals-coupon__input is-active">
-                      <input type="text"
-                       placeholder="Enter your phone number"
+             <div class="wc-block-components-text-input wc-block-components-totals-coupon__input is-active">
+             <input type="text"
             value={otp}
             onChange={handleOtpChange}
-            disabled={isFrozen}/>
-            </div>
-            <button style={{height:"3em"}} onClick={verifyOtp} class="wc-block-components-button wp-element-button otp-send-button">
+            disabled={isFrozen}/>        
+            <label for="wc-block-components-totals-coupon__input-0">Enter OTP</label></div>
+            <button onClick={verifyOtp} class="wc-block-components-button wp-element-button otp-send-button">
               <span class="" >Verify OTP</span>
               </button>
             </div>

@@ -2,6 +2,33 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/components/Loader.js":
+/*!**********************************!*\
+  !*** ./src/components/Loader.js ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../style.scss */ "./src/style.scss");
+
+
+
+const Loader = () => {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "loader-container"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "loader"
+  }));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Loader);
+
+/***/ }),
+
 /***/ "./src/components/availble-coupons.js":
 /*!********************************************!*\
   !*** ./src/components/availble-coupons.js ***!
@@ -17,22 +44,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../style.scss */ "./src/style.scss");
+/* harmony import */ var _Loader__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Loader */ "./src/components/Loader.js");
+/* harmony import */ var _availble_points__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./availble-points */ "./src/components/availble-points.js");
 
 
 
 
-const Loader = () => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-  className: "loader-container"
-}, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-  className: "loader"
-}));
+
+
 const Coupons = ({
   rewardsData,
   tokensData
 }) => {
   const [coupon, setCoupon] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
   const [activeLink, setActiveLink] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("REWARDS");
-  const [couponPoints, SetCouponPoints] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
   const [couponCode, setCouponCode] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
   const [isLoading, setIsLoading] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
   const [selectedReward, setSelectedReward] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
@@ -68,11 +93,9 @@ const Coupons = ({
     SetCouponPoints(value);
   };
   const handlerewards = () => {
-    console.log("hello wchow");
     setActiveLink("REWARDS");
   };
   const handlerTokens = () => {
-    console.log("handling tokens");
     setActiveLink("TOKENS");
   };
   const handleRewardSelection = index => {
@@ -85,40 +108,7 @@ const Coupons = ({
     setCoupon(event.target.value);
     setCouponCode(event.target.value);
   };
-  const hanldeCoupons = event => {
-    setCoupon(event.target.value);
-    SetCouponPoints(event.target.value);
-  };
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, isLoading ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Loader, null) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h5", {
-    style: {
-      fontWeight: "bold"
-    }
-  }, "Redeem your Loyalty points here"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "(value of each point is 10)"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "available-balance-container"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "availble-points-container"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    className: "availblepointsmarging"
-  }, "Available Balance:"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, " 100")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "availble-points-container"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    className: "availblepointsmarging"
-  }, "Redeemable Balance:"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "80"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "points-redem-container"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    class: "wc-block-components-text-input wc-block-components-totals-coupon__input is-active"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
-    type: "text",
-    onChange: hanldeCoupons,
-    value: couponPoints
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-    style: {
-      height: "3em"
-    },
-    class: "wc-block-components-button wp-element-button otp-send-button"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    class: "wc-block-components-button__text"
-  }, "Credit Redemption"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h5", {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, isLoading ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Loader__WEBPACK_IMPORTED_MODULE_3__["default"], null) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_availble_points__WEBPACK_IMPORTED_MODULE_4__["default"], null), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     style: {
       fontWeight: "bold"
     }
@@ -195,7 +185,7 @@ const Coupons = ({
   }, "Apply")))) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "No data found"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "points-redem-container"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    class: "wc-block-components-text-input wc-block-components-totals-coupon__input is-active"
+    class: "wc-block-components-text-input wc-block-components-totals-coupon__input "
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "text",
     value: couponCode,
@@ -207,16 +197,108 @@ const Coupons = ({
     class: "wc-block-components-button wp-element-button otp-send-button"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     class: "wc-block-components-button__text"
-  }, "Credit Redemption")))));
+  }, "Enter Coupon Code"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "points-redem-containe-responsive"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    class: "wc-block-components-text-input wc-block-components-totals-coupon__input "
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    type: "text",
+    value: couponCode,
+    onChange: handleCouponcode
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    class: "wc-block-components-button wp-element-button otp-send-button"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    class: "wc-block-components-button__text"
+  }, "Enter Coupon Code")))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Coupons);
 
 /***/ }),
 
-/***/ "./src/components/send-otp.js":
-/*!************************************!*\
-  !*** ./src/components/send-otp.js ***!
-  \************************************/
+/***/ "./src/components/availble-points.js":
+/*!*******************************************!*\
+  !*** ./src/components/availble-points.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../style.scss */ "./src/style.scss");
+
+
+
+const AvailblePoints = () => {
+  const [couponPoints, SetCouponPoints] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
+  const hanldeCoupons = event => {
+    SetCouponPoints(event.target.value);
+  };
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    style: {
+      fontWeight: "bold"
+    }
+  }, "Redeem your Loyalty points here"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h5", {
+    style: {
+      fontWeight: "bold"
+    }
+  }, "(value of each point is 10)"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "points-container"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "available-balance-container"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    className: "availblepointsmarging"
+  }, "Available  Balance:"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    className: "availblepointsmarging"
+  }, "Redeemable Balance:")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    className: "availblepointsmarging"
+  }, "100"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    className: "availblepointsmarging"
+  }, "80"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "points-redem-container1"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    class: "wc-block-components-text-input wc-block-components-totals-coupon__input is-active"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    type: "text",
+    value: couponPoints,
+    onChange: hanldeCoupons
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    class: "wc-block-components-button wp-element-button otp-send-button"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    class: "wc-block-components-button__text"
+  }, "Credit Redemption")))));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AvailblePoints);
+
+/***/ }),
+
+/***/ "./src/components/coupon-handler.js":
+/*!******************************************!*\
+  !*** ./src/components/coupon-handler.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ CouponsHandler)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _otp_sender__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./otp-sender */ "./src/components/otp-sender.js");
+
+
+function CouponsHandler() {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_otp_sender__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+}
+
+/***/ }),
+
+/***/ "./src/components/otp-sender.js":
+/*!**************************************!*\
+  !*** ./src/components/otp-sender.js ***!
+  \**************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -361,31 +443,32 @@ const SendOtp = () => {
   const handleResendClick = () => {
     console.log('Resend OTP clicked');
   };
+  console.log(selectedCountry);
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "mobile-otp-container"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "select--control-container"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.SelectControl, {
+    class: "wc-block-components-text-input wc-block-components-totals-coupon__input selectcontrol"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    type: "text",
     value: selectedCountry,
     options: CountryCodes,
-    onChange: handleCountryChange,
-    className: "selectcontrol",
+    onChange: handleCountryChange
+    // className='selectcontrol'
+    ,
     disabled: isFrozen
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    class: "wc-block-components-text-input wc-block-components-totals-coupon__input"
+    class: "wc-block-components-text-input wc-block-components-totals-coupon__input is-active"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "number",
-    placeholder: "Enter your phone number",
     value: mobile,
     "aria-label": "Enter code",
     onChange: handleMobileNumberChange,
     disabled: isFrozen
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
+    for: "wc-block-components-totals-coupon__input-0"
+  }, "Phone Number")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     onClick: sendOtpRequest,
-    class: "wc-block-components-button wp-element-button otp-send-button",
-    style: {
-      height: "3em"
-    }
+    class: "wc-block-components-button wp-element-button otp-send-button"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     class: ""
   }, "Receive OTP"))), error && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
@@ -400,14 +483,12 @@ const SendOtp = () => {
     class: "wc-block-components-text-input wc-block-components-totals-coupon__input is-active"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "text",
-    placeholder: "Enter your phone number",
     value: otp,
     onChange: handleOtpChange,
     disabled: isFrozen
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-    style: {
-      height: "3em"
-    },
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
+    for: "wc-block-components-totals-coupon__input-0"
+  }, "Enter OTP")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     onClick: verifyOtp,
     class: "wc-block-components-button wp-element-button otp-send-button"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
@@ -426,35 +507,6 @@ const SendOtp = () => {
 
 /***/ }),
 
-/***/ "./src/components/user-otp.js":
-/*!************************************!*\
-  !*** ./src/components/user-otp.js ***!
-  \************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ MyButton)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../style.scss */ "./src/style.scss");
-/* harmony import */ var _send_otp__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./send-otp */ "./src/components/send-otp.js");
-
-
-
-function MyButton() {
-  const onSubmit = async e => {
-    e.preventDefault();
-    debugger;
-  };
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("form", {
-    onSubmit: onSubmit
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_send_otp__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
-}
-
-/***/ }),
-
 /***/ "./src/front.js":
 /*!**********************!*\
   !*** ./src/front.js ***!
@@ -466,7 +518,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "react-dom");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components_user_otp__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/user-otp */ "./src/components/user-otp.js");
+/* harmony import */ var _components_coupon_handler__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/coupon-handler */ "./src/components/coupon-handler.js");
 
 
 
@@ -477,7 +529,7 @@ window.addEventListener('DOMContentLoaded', () => {
   if (cards) {
     Array.from(cards).forEach(card => {
       const attributes = JSON.parse(card.dataset.mtAttributes);
-      react_dom__WEBPACK_IMPORTED_MODULE_1___default().hydrate((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_user_otp__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      react_dom__WEBPACK_IMPORTED_MODULE_1___default().hydrate((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_coupon_handler__WEBPACK_IMPORTED_MODULE_2__["default"], {
         attributes: attributes
       }), card);
     });

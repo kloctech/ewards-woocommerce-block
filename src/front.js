@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MyButton from './components/user-otp';
+
+import CouponsHandler from './components/coupon-handler';
 
 window.addEventListener('DOMContentLoaded', () => {
     const cards = document.querySelectorAll('.mt-block-user-card-wrapper')
@@ -9,7 +10,7 @@ window.addEventListener('DOMContentLoaded', () => {
         Array.from(cards).forEach(card => {
             const attributes = JSON.parse(card.dataset.mtAttributes)
             ReactDOM.hydrate(
-                <MyButton attributes={attributes} />,
+                <CouponsHandler attributes={attributes} />,
                 card
             )
         })

@@ -1,17 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Button, TextControl } from "@wordpress/components";
 import "../style.scss";
-
-const Loader = () => (
-  <div className="loader-container">
-    <div className="loader"></div>
-  </div>
-);
-
+import Loader from "./Loader";
+import AvailblePoints from "./availble-points";
 const Coupons = ({ rewardsData, tokensData }) => {
   const [coupon, setCoupon] = useState("");
   const [activeLink, setActiveLink] = useState("REWARDS");
-  const [couponPoints,SetCouponPoints] = useState("")
   const [couponCode,setCouponCode] = useState("")
   const [isLoading, setIsLoading] = useState(true);
   const [selectedReward, setSelectedReward] = useState(null);
@@ -40,21 +34,15 @@ const Coupons = ({ rewardsData, tokensData }) => {
     setCouponCode(value)
     SetCouponPoints(value)
   };
-
   const handlerewards = () => {
-    console.log("hello wchow");
     setActiveLink("REWARDS");
   };
-
   const handlerTokens = () => {
-    console.log("handling tokens");
     setActiveLink("TOKENS");
   };
-
   const handleRewardSelection = (index) => {
     setSelectedReward(index);
   };
-
   const handleTokenSelection = (index) => {
     setSelectedToken(index);
   };
@@ -62,45 +50,14 @@ const handleCouponcode = (event) =>{
   setCoupon(event.target.value)
   setCouponCode(event.target.value)
 }
-const hanldeCoupons =  (event) =>{
-  setCoupon(event.target.value)
-  SetCouponPoints(event.target.value)
-}
   return (
     <div>
       {isLoading ? (
         <Loader />
       ) : (
         <>
-          <h5 style={{ fontWeight: "bold" }}>Redeem your Loyalty points here</h5>
-          <p>(value of each point is 10)</p>         
-          <div >
-            </div> 
-            <div className="available-balance-container">
-              <div  className="availble-points-container" >
-                <p  className="availblepointsmarging">Available Balance:</p>
-                <p> 100</p>
-              </div>
-              <div  className="availble-points-container">
-                <p  className="availblepointsmarging">Redeemable Balance:</p>
-                <p>80</p>
-              </div>
-             
-            </div>
-            <div className="points-redem-container">
-         
-         <div class="wc-block-components-text-input wc-block-components-totals-coupon__input is-active">
-           <input type="text"
-           onChange={hanldeCoupons }
-           value={couponPoints}
-          />
-           </div>
-           <button  style={{height:"3em"}} class="wc-block-components-button wp-element-button otp-send-button">
-            <span class="wc-block-components-button__text">Credit Redemption</span>
-            </button>
-         </div>
-          
-          <h5 style={{ fontWeight: "bold" }}>Choose/Enter Your loyalty coupon code here</h5>
+        <AvailblePoints></AvailblePoints>
+          <p style={{ fontWeight: "bold" }}>Choose/Enter Your loyalty coupon code here</p>
           <div className="topnav">
             <a className={activeLink === "REWARDS" ? "active" : ""} onClick={handlerewards}>
               REWARDS
@@ -177,17 +134,26 @@ const hanldeCoupons =  (event) =>{
           ) : (
             <p>No data found</p>
           )}
-
         <div className="points-redem-container">
-         
-         <div class="wc-block-components-text-input wc-block-components-totals-coupon__input is-active">
+         <div class="wc-block-components-text-input wc-block-components-totals-coupon__input ">
            <input type="text"
            value={couponCode}
            onChange={handleCouponcode}
           />
            </div>
-           <button  style={{height:"3em"}} class="wc-block-components-button wp-element-button otp-send-button">
-            <span class="wc-block-components-button__text">Credit Redemption</span>
+           <button style ={{height:"3em"}}class="wc-block-components-button wp-element-button otp-send-button">
+            <span class="wc-block-components-button__text">Enter Coupon Code</span>
+            </button>
+         </div>
+         <div className="points-redem-containe-responsive">
+         <div class="wc-block-components-text-input wc-block-components-totals-coupon__input ">
+           <input type="text"
+           value={couponCode}
+           onChange={handleCouponcode}
+          />
+           </div>
+           <button class="wc-block-components-button wp-element-button otp-send-button">
+            <span class="wc-block-components-button__text">Enter Coupon Code</span>
             </button>
          </div>
         </>
@@ -195,5 +161,4 @@ const hanldeCoupons =  (event) =>{
     </div>
   );
 };
-
 export default Coupons;
