@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Button, TextControl } from "@wordpress/components";
 import "../style.scss";
-import Loader from "./Loader";
-import AvailblePoints from "./availble-points";
+import Loader from "./loader";
+import AvailblePoints from "./available-points";
 const Coupons = ({ rewardsData, tokensData }) => {
   const [coupon, setCoupon] = useState("");
   const [activeLink, setActiveLink] = useState("REWARDS");
@@ -10,6 +10,9 @@ const Coupons = ({ rewardsData, tokensData }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [selectedReward, setSelectedReward] = useState(null);
   const [selectedToken, setSelectedToken] = useState(null);
+  const [iscouponcode,Setiscouponcode] =  useState(false)
+  const [isCouponcodeDisabled, setIsCouponcodesDisabled] = useState(false);
+
   const [backgroundColors, setBackgroundColors] = useState([
     { start: "#b4c5d1", end: "#6ba7d1" },
     { start: "#ffcccc", end: "#ff6666" },
@@ -29,7 +32,7 @@ const Coupons = ({ rewardsData, tokensData }) => {
   }, []);
 
   const onButtonClick = (value) => {
-    console.log(value);
+   
     setCoupon(value);
     setCouponCode(value)
     SetCouponPoints(value)
@@ -47,9 +50,35 @@ const Coupons = ({ rewardsData, tokensData }) => {
     setSelectedToken(index);
   };
 const handleCouponcode = (event) =>{
+  Setiscouponcode(false)
   setCoupon(event.target.value)
   setCouponCode(event.target.value)
+  setIsCouponPointsDisabled(false); // Disable if coupon points is filled
+
 }
+const handleCouponPointsInputClick = () => {
+  document.getElementById('coupon-points-lable').classList.add('focused');
+  
+};
+
+const handleCouponPointsInputBlur = () => {
+  Setiscouponcode(!couponCode);
+   // Set isError to true if mobile is empty
+  //  document.getElementById('coupon-points-lable').classList.remove('focused');
+
+ 
+};
+
+const handlesubmitcouponcode = (event) =>{
+  event.preventDefault()
+}
+const handleclickcouponcode = () => {
+  const confirmation = window.confirm("You can't re-enter your coupon code. Are you sure?");
+
+  if (confirmation) {
+    setIsCouponcodesDisabled(true);
+  }
+};
   return (
     <div>
       {isLoading ? (
@@ -66,7 +95,7 @@ const handleCouponcode = (event) =>{
               TOKENS
             </a>
           </div>
-
+          <div>
           {activeLink === "REWARDS" ? (
             <div className="tokes-rewards-coupons-container">
               {rewardsData.map((item, index) => (
@@ -134,31 +163,55 @@ const handleCouponcode = (event) =>{
           ) : (
             <p>No data found</p>
           )}
-        <div className="points-redem-container">
-         <div class="wc-block-components-text-input wc-block-components-totals-coupon__input ">
-           <input type="text"
-           value={couponCode}
-           onChange={handleCouponcode}
-          />
-           </div>
-           <button style ={{height:"3em"}}class="wc-block-components-button wp-element-button otp-send-button">
-            <span class="wc-block-components-button__text">Enter Coupon Code</span>
-            </button>
+       
+<form onSubmit = {handlesubmitcouponcode}>
+<div >
+         <div className={`points-redem-container wc-block-components-text-input ${iscouponcode ? 'has-error' : ''}`}>
+        <label
+          htmlFor="0-coupon-points"
+          id="coupon-points-lable"
+          className={`${couponCode || document.activeElement === document.getElementById('0-coupon-points') ? 'focused' : 'centered'}`}
+        >
+          Coupon code
+        </label>
+        <input
+          type="text"
+          id="0-coupon-points"
+          disabled={isCouponcodeDisabled}
+
+          value={couponCode}
+          onChange={handleCouponcode}
+          onBlur={handleCouponPointsInputBlur}
+          onClick={handleCouponPointsInputClick}
+         //  onFocus={handleCouponPointsInputfocus}
+        />
+        <div className='otpcontainer'>
+          <button style={{height:'3em',marginTop:"10px"}}
+          onClick={handleclickcouponcode}
+            className="wc-block-components-button wp-element-button otp-send-button"
+          >
+            <span>Enter coupon code</span>
+          </button>
+        </div>
+      </div>
+      {/* Error message for Coupon Points */}
+      {iscouponcode && (
+        <p style={{ paddingLeft: "50px", marginTop: "-10px" }} className='wc-block-components-validation-error'>Please enter coupon code </p>
+      )}
          </div>
-         <div className="points-redem-containe-responsive">
-         <div class="wc-block-components-text-input wc-block-components-totals-coupon__input ">
-           <input type="text"
-           value={couponCode}
-           onChange={handleCouponcode}
-          />
-           </div>
-           <button class="wc-block-components-button wp-element-button otp-send-button">
-            <span class="wc-block-components-button__text">Enter Coupon Code</span>
-            </button>
-         </div>
+         <div className='otpbtncontianer-responsive'>
+<button  onClick={handleclickcouponcode} style={{height:'3em'}} class="creditpointsbtn components-button wc-block-components-button wp-element-button wc-block-cart__submit-button contained"><span class="wc-block-components-button__text">Enter coupon code</span></button>
+</div>
+</form>
+      
+       
+</div>
+
         </>
       )}
+      
     </div>
+  
   );
 };
 export default Coupons;

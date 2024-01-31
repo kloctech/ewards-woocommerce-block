@@ -56,6 +56,8 @@ $margin-Bottom:"20px";
   width: 6%;
   height: 3.5em;
   text-align: center;
+  // margin-bottom: 20px;
+
 }
 // @media screen and (max-width:375px){
  
@@ -66,7 +68,6 @@ $margin-Bottom:"20px";
 // }
 .otp-send-button{
   margin-left: 8px;
-  margin-top: 20px;
   height: 10%;
 }
 .available-balance-container{
@@ -149,12 +150,13 @@ $margin-Bottom:"20px";
     width: 130px;
   }
   .selectcontrol{
-    width: 30%;
+    width: 20%;
   }
 }
 @media  screen and (max-width:375px) {
   .selectcontrol{
-    width: 45%;
+    width: 25%;
+    margin-bottom: 0px;
   }
   .otp-send-button{
     font-size: 8px;
@@ -272,6 +274,8 @@ $margin-Bottom:"20px";
 }
 .points-redem-container{
   display: flex;
+  margin-left: 560px;
+ width: 40%;
   justify-content: end;
 }
 .points-redem-container1{
@@ -281,9 +285,32 @@ $margin-Bottom:"20px";
 }.points-redem-containe-responsive{
   display: none;
 }
+// @media  screen and (max-width:1366px) {
+//   .points-redem-container{
+// width: 100%;
+// margin-left:600px;
+//   }
+// }
+@media  screen and (max-width:912px) {
+  .points-redem-container{
+width:55%;
+margin-left:350px;
+  }
+}
+@media  screen and (max-width:768px) {
+  .points-redem-container{
+    width: 60%;
+    margin-left: 300px;
+  }
+  .points-redem-containe-responsive{
+    display: flex;
+  align-items: center;
+  }
+}
 @media  screen and (max-width:540px) {
   .points-redem-container{
-    display: none;
+    width: 100%;
+    margin-left: 0px;
   }
   .points-redem-containe-responsive{
     display: flex;
@@ -291,9 +318,17 @@ $margin-Bottom:"20px";
   }
 }
 @media  screen and (max-width:768px) {
-  .points-container{
-    flex-direction: column;
+  
+ 
+
+  .points-redem-container1{
+    margin-left: 50px;
   }
+}
+@media  screen and (max-width:540px) {
+  
+ 
+
   .points-redem-container1{
     margin-left: 0px;
   }
@@ -375,6 +410,11 @@ margin: 0px;
 }
 .resendotptext{
   font-size: 18px;
+}
+@media  screen and (max-width:780px) {
+  .available-balance-container{
+    width: 265px;
+  }
 }
 @media screen and (max-width:430px) {
   .textcolor{
@@ -501,6 +541,9 @@ border-bottom: none;
   .topnav{
     width: 100.8%;
   }
+  .points-redem-container1{
+    margin-left: 0px;
+  }
 }
 @media screen  and (max-width:280px){
   .topnav{
@@ -575,4 +618,71 @@ border-bottom: none;
     
   }
  
+  .wc-block-components-text-input {
+    position: relative;
+    margin-bottom: 20px; /* Adjust spacing as needed */
+  }
   
+  label {
+    position: absolute;
+    top: 50%;
+    left: 40px; /* Adjust the left position as needed */
+    transform: translateY(-100%);
+    pointer-events: none;
+    transition: top 0.3s ease, font-size 0.3s ease;
+  }
+  
+  label.focused {
+    top: -15px; /* Adjust the top position as needed */
+    font-size: 16px; /* You can adjust the font size as needed */
+    left: 18px;
+    padding-bottom: 30px;
+  }
+  .centered {
+    text-align: center;
+  }
+ 
+  
+  .otpcontainer{
+    display: flex;
+  }
+  .otpbtncontianer-responsive{
+    display: none;
+  }
+  .creditredemption-container{
+    display: flex;
+  }
+  .creditpointsbtn{
+    width: 10%;
+  }
+  .otpbtn{
+width: 29%;
+display: none;
+  }
+  /* Add any other styles or adjustments you need for the input or container */
+  .verifyotpbtn{
+    width: 100%;
+  }
+  
+  @media  screen and (max-width:540px) {
+    .otpbtncontianer-responsive{
+      display: flex;
+    }
+    .points-container{
+      flex-direction: column;
+      
+    }
+    .otpcontainer{
+      display: none
+    }
+    .otpbtn{
+      width: 100%;
+      display: flex;
+    }
+    .verifyotpbtn{
+      width: 100%;
+    }
+    .creditpointsbtn{
+      width: 100%;
+    }
+  }
