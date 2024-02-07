@@ -547,7 +547,7 @@ const SendOtp = () => {
         // console.log(error.message)
         console.log(error.response.data.resultMessage.en);
         setotperror(error.response.data.resultMessage.en);
-        setIsmobileNumeber(false);
+        //  setIsmobileNumeber(true)
       });
     }
   };
@@ -602,23 +602,19 @@ const SendOtp = () => {
     disabled: ismobileNumber
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `wc-block-components-text-input ${isError ? 'has-error' : ''}`
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
+    htmlFor: "0-mobile",
+    id: "0-mobile-label",
+    className: `${mobile || document.activeElement === document.getElementById('0-mobile') ? 'focused' : 'centered'}`
+  }, "Mobile Number"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "number",
     id: "0-mobile",
     value: mobile,
     onChange: handleMobileNumberChange,
     disabled: ismobileNumber,
     onBlur: handleInputBlur,
-    onClick: handleInputClick,
-    autocapitalize: "off",
-    autocomplete: "off",
-    "aria-label": "Mobile Number",
-    "aria-invalid": "false"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
-    htmlFor: "0-mobile",
-    id: "0-mobile-label",
-    className: `${mobile || document.activeElement === document.getElementById('0-mobile') ? 'focused' : 'centered'}`
-  }, "Mobile Number")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    onClick: handleInputClick
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "otpcontainer"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     disabled: ismobileNumber,
@@ -644,7 +640,7 @@ const SendOtp = () => {
     class: ismobileNumber ? "otpbtn  wc-block-components-button wp-element-button-disabled" : "otpbtn  wc-block-components-button wp-element-button-able"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     class: "wc-block-components-button__text"
-  }, "Receive OTP"))))), otpsucmsg && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("form", {
+  }, "Receive OTP"))))), opterrmsg && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("form", {
     disabled: otpform,
     onSubmit: handlegetloyaypoints
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -692,7 +688,7 @@ const SendOtp = () => {
   }, "Don't Receive an OTP on your mobile?", ' ', (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "resend-otp-text",
     onClick: handleResendClick
-  }, "Resend OTP")), showCoupons && verifyotpsusmsg && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_available_coupons__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, "Resend OTP")), showCoupons && verifyotperrmsg && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_available_coupons__WEBPACK_IMPORTED_MODULE_2__["default"], {
     rewardsData: rewardsData,
     tokensData: tokensData
   }));

@@ -124,7 +124,7 @@ const SendOtp = () => {
           // console.log(error.message)
            console.log(error.response.data.resultMessage.en)
            setotperror(error.response.data.resultMessage.en)
-          setIsmobileNumeber(false)
+          //  setIsmobileNumeber(true)
         });
       }
   };
@@ -175,7 +175,6 @@ const SendOtp = () => {
   return (
     <>
       <div>
-      
         <form onSubmit={handlemobilenumberSubmit}>
           <div className= {!otpsucmsg   ||  !ismobileNumber ? "mobile-otp-container" :"mobile-otp-container-blur"}>
             <div class="wc-block-components-text-input wc-block-components-totals-coupon__input selectcontrol">
@@ -188,7 +187,13 @@ const SendOtp = () => {
               />
             </div>
             <div className={`wc-block-components-text-input ${isError ? 'has-error' : ''}`}>
-             
+              <label
+                htmlFor="0-mobile"
+                id="0-mobile-label"
+                className={`${mobile || document.activeElement === document.getElementById('0-mobile') ? 'focused' : 'centered'}`}
+              >
+                Mobile Number
+              </label>
               <input
                 type="number"
                 id="0-mobile"
@@ -197,16 +202,7 @@ const SendOtp = () => {
                 disabled={ismobileNumber}
                 onBlur={handleInputBlur}
                 onClick={handleInputClick}
-                autocapitalize="off" autocomplete="off" aria-label="Mobile Number" aria-invalid="false"
-               
               />
-               <label
-                htmlFor="0-mobile"
-                id="0-mobile-label"
-                className={`${mobile || document.activeElement === document.getElementById('0-mobile') ? 'focused' : 'centered'}`}
-              >
-                Mobile Number
-              </label>
             </div>
             <div className='otpcontainer'>
               <button
@@ -239,7 +235,7 @@ const SendOtp = () => {
         </form>
       </div>
    
-      {otpsucmsg && (
+      {opterrmsg && (
         <form disabled={otpform} onSubmit={handlegetloyaypoints}>
           <div>
             <div className= {!verifyotpsusmsg || !otpform? "mobile-otp-container" :"mobile-otp-container-blur"}>
@@ -289,7 +285,7 @@ const SendOtp = () => {
         </p>
       )}
 
-      {showCoupons && verifyotpsusmsg && <Coupons rewardsData={rewardsData} tokensData={tokensData} />}
+      {showCoupons && verifyotperrmsg && <Coupons rewardsData={rewardsData} tokensData={tokensData} />}
     </>
   );
 };
