@@ -314,6 +314,7 @@
 .resend-otp-text {
   text-decoration: underline;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .inputfiled {
@@ -545,12 +546,7 @@ input[type=number] {
     height: 24px;
   }
 }
-.wc-block-components-text-input {
-  position: relative;
-  margin-bottom: 20px; /* Adjust spacing as needed */
-}
-
-label {
+.lable {
   position: absolute;
   top: 50%;
   left: 40px; /* Adjust the left position as needed */
@@ -559,7 +555,7 @@ label {
   transition: top 0.3s ease, font-size 0.3s ease;
 }
 
-label.focused {
+.mobile-label.focused {
   top: -15px; /* Adjust the top position as needed */
   font-size: 16px; /* You can adjust the font size as needed */
   left: 18px;
@@ -573,15 +569,9 @@ label.focused {
   transition: top 0.3s ease, transform 0.3s ease;
 }
 
-label.not-focused {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  transition: top 0.3s ease, transform 0.3s ease;
-}
-
 .otpcontainer {
   display: flex;
+  margin-top: 10px;
 }
 
 .otpbtncontianer-responsive {
@@ -628,11 +618,11 @@ label.not-focused {
   }
 }
 .wp-element-button-able {
-  background-color: var(--wp--preset--color--contrast);
+  background-color: #111111;
   border-radius: 0.33rem;
   border-color: var(--wp--preset--color--contrast);
   border-width: 0;
-  color: var(--wp--preset--color--base);
+  color: #f9f9f9;
   font-family: inherit;
   font-size: var(--wp--preset--font-size--small);
   font-style: normal;
@@ -665,9 +655,28 @@ label.not-focused {
   text-decoration: none;
 }
 
+wp-element-button-able:hover {
+  background-color: var(--wp--preset--color--contrast);
+  border-radius: 0.33rem;
+  border-color: var(--wp--preset--color--contrast);
+  border-width: 0;
+  color: var(--wp--preset--color--base);
+  font-family: inherit;
+  font-size: var(--wp--preset--font-size--small);
+  font-style: normal;
+  font-weight: 500;
+  line-height: inherit;
+  padding-top: 0.6rem;
+  padding-right: 1rem;
+  padding-bottom: 0.6rem;
+  padding-left: 1rem;
+  cursor: not-allowed;
+  text-decoration: none;
+}
+
 .error-msg-outlineing {
-  padding-left: 100px;
-  margin-top: -10px;
+  padding-left: 120px;
+  margin-top: 20px;
 }
 
 .coupon-points-error-msg-otulineing {

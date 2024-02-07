@@ -442,6 +442,7 @@ const SendOtp = () => {
   const [isError, setIsError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [noopt, setnoopt] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [otpform, setotpform] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [coupondata, setCouponData] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const rewardsData = [{
     title: "Coupon 1",
     date: "Valid: 12th June 2024",
@@ -484,7 +485,7 @@ const SendOtp = () => {
   const handleMobileNumberChange = event => {
     const value = event.target.value;
     setIsError(false);
-    if (value && value.length > 10) {
+    if (value && value.length > 11) {
       setError('Mobile number must be 10 digits.');
     } else {
       setError('');
@@ -494,12 +495,42 @@ const SendOtp = () => {
   };
   const handleOtpChange = event => {
     const value = event.target.value;
-    setnoopt(false);
-    setOtp(value);
+    setIsError(false);
+    if (value && value.length > 9) {
+      setverifyotperrmsg('otp should be 8 digits only');
+    } else {
+      setError('');
+      setotperror("");
+      setOtp(value);
+      setverifyotperrmsg("");
+      setnoopt(false);
+    }
   };
-  const handleResendClick = () => {
+  const handleResendClick = async () => {
+    setOtp("");
     setIsmobileNumeber(false);
     setotpform(false);
+    setverifyotperrmsg("");
+    //   handlemobilenumberSubmit()
+    const requestData = {
+      mobile_number: mobile,
+      store_url: window.location.origin,
+      country_code: selectedCountry
+    };
+    await axios__WEBPACK_IMPORTED_MODULE_3__["default"].post(`${PRDOUCTION_VAR.PRDOUCTION_URL}/api/ewards/customer-get-loyalty-info`, requestData).then(response => {
+      //  setSuccessMessage(response.message);
+      // setError('');
+      //  setotpsucmsg(response.data.otpResponse.response.message);
+      setotpsucmsg(response.data.otpResponse.response.message);
+      console.log(response.data.otpResponse.response.message);
+      setIsmobileNumeber(true);
+    }).catch(error => {
+      // setotperror(error.response.data.resultMessage.en);
+      // console.log(error.message)
+      console.log(error.response.data.resultMessage.en);
+      setotperror(error.response.data.resultMessage.en);
+      setIsmobileNumeber(true);
+    });
   };
   const handleInputClick = () => {
     document.getElementById('0-mobile-label').classList.add('focused');
@@ -528,13 +559,6 @@ const SendOtp = () => {
         store_url: window.location.origin,
         country_code: selectedCountry
       };
-
-      //   const rewardsData ={
-      //     "customer_key": "Shopify_test",
-      //     "merchant_id": "15441607",
-      //     "mobile": "8553831358",
-      //     "country_code": "91"
-      // }
       await axios__WEBPACK_IMPORTED_MODULE_3__["default"].post(`${PRDOUCTION_VAR.PRDOUCTION_URL}/api/ewards/customer-get-loyalty-info`, requestData).then(response => {
         //  setSuccessMessage(response.message);
         // setError('');
@@ -547,13 +571,19 @@ const SendOtp = () => {
         // console.log(error.message)
         console.log(error.response.data.resultMessage.en);
         setotperror(error.response.data.resultMessage.en);
-        setIsmobileNumeber(false);
+        setIsmobileNumeber(true);
       });
     }
   };
   const handlegetloyaypoints = event => {
     event.preventDefault();
-    if (otp && selectedCountry && mobile) {
+    if (otp.length !== 8) {
+      setverifyotperrmsg('otp should be 8 digits only');
+      return;
+    } else {
+      setverifyotperrmsg("");
+    }
+    if (otp) {
       const requestData = {
         mobile_number: mobile,
         country_code: selectedCountry,
@@ -564,7 +594,8 @@ const SendOtp = () => {
         setverifyotpsucmsg(response.data);
         setverifyotperrmsg("");
         setotpform(true);
-        console.log(response.data.loyalyInfo);
+        console.log(response.data.loyaltyInfo);
+        setCouponData(requestData?.data?.loyaltyInfo);
         setShowCoupons(true); // Set showCoupons to true on successful verification
       }).catch(error => {
         console.error(error.response.data.resultMessage.en);
@@ -575,25 +606,24 @@ const SendOtp = () => {
       });
     }
   };
-  // useEffect(() => {
-  //   let timeoutId;
-  //   const showText = () => {
-  //     document.getElementById('resendText').style.display = 'block';
-  //     timeoutId = setTimeout(() => {
-  //       document.getElementById('resendText').style.display = 'none';
-  //     }, 3000);
-  //   };
-
-  //   showText();
-  //   return () => clearTimeout(timeoutId);
-  // }, []);
-  console.log(opterrmsg);
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("form", {
-    onSubmit: handlemobilenumberSubmit
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      display: 'flex',
+      flexDirection: 'column',
+      position: 'relative'
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("form", {
+    onSubmit: handlemobilenumberSubmit,
+    style: {
+      display: 'flex',
+      flexDirection: "column",
+      width: "100%",
+      marginBottom: "10px"
+    }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: !otpsucmsg || !ismobileNumber ? "mobile-otp-container" : "mobile-otp-container-blur"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    class: "wc-block-components-text-input wc-block-components-totals-coupon__input selectcontrol"
+    class: "wc-block-components-text-input  selectcontrol"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "text",
     value: selectedCountry,
@@ -617,8 +647,8 @@ const SendOtp = () => {
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
     htmlFor: "0-mobile",
     id: "0-mobile-label",
-    className: `${mobile || document.activeElement === document.getElementById('0-mobile') ? 'focused' : 'centered'}`
-  }, "Mobile Number")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: `mobile-label ${mobile || document.activeElement === document.getElementById('0-mobile') ? 'focused' : ''}`
+  }, "Enter Mobile")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "otpcontainer"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     disabled: ismobileNumber,
@@ -634,7 +664,9 @@ const SendOtp = () => {
     class: "wc-block-components-validation-error error-msg-outlineing"
   }, opterrmsg) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "wc-block-components-validation-success error-msg-outlineing"
-  }, otpsucmsg), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, otpsucmsg), opterrmsg === "Customer not found." ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: `${window.location.origin}/my-account/`
+  }, "Don't have an account? Create one here.") : "", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "otpbtncontianer-responsive",
     disabled: !ismobileNumber
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
@@ -646,7 +678,12 @@ const SendOtp = () => {
     class: "wc-block-components-button__text"
   }, "Receive OTP"))))), otpsucmsg && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("form", {
     disabled: otpform,
-    onSubmit: handlegetloyaypoints
+    onSubmit: handlegetloyaypoints,
+    style: {
+      display: 'flex',
+      marginBottom: '0px',
+      width: '100%'
+    }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: !verifyotpsusmsg || !otpform ? "mobile-otp-container" : "mobile-otp-container-blur"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -654,8 +691,8 @@ const SendOtp = () => {
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
     htmlFor: "otp",
     id: "otp-lable",
-    className: otp || document.activeElement === document.getElementById('otp') ? 'focused' : ''
-  }, "Enter otp"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    className: `mobile-label ${otp || document.activeElement === document.getElementById('otp') ? 'focused' : ''}`
+  }, "Enter OTP"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "text",
     id: "otp",
     value: otp,
@@ -671,12 +708,11 @@ const SendOtp = () => {
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     disabled: otpform,
     class: ""
-  }, "Verify OTP")))), noopt && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    style: {
-      paddingLeft: "100px"
-    },
+  }, "Verify OTP")))), noopt ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "error-msg-outlineing wc-block-components-validation-error"
-  }, "Please enter otp"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, "Please enter OTP") : verifyotperrmsg ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    className: "error-msg-outlineing wc-block-components-validation-error"
+  }, verifyotperrmsg) : "", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "otpbtncontianer-responsive",
     disabled: !ismobileNumber
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
@@ -686,15 +722,16 @@ const SendOtp = () => {
     class: otpform ? "otpbtn  wc-block-components-button wp-element-button-disabled" : "otpbtn  wc-block-components-button wp-element-button-able"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     class: "wc-block-components-button__text"
-  }, "Verify OTP"))))), opterrmsg && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+  }, "Verify OTP"))))), otpsucmsg && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     id: "resendText",
     className: "resendotptext"
-  }, "Don't Receive an OTP on your mobile?", ' ', (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+  }, "Didn't Receive?", ' ', (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "resend-otp-text",
     onClick: handleResendClick
   }, "Resend OTP")), showCoupons && verifyotpsusmsg && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_available_coupons__WEBPACK_IMPORTED_MODULE_2__["default"], {
     rewardsData: rewardsData,
-    tokensData: tokensData
+    tokensData: tokensData,
+    coupondata: coupondata
   }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SendOtp);

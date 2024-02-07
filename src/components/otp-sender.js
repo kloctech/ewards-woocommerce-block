@@ -19,7 +19,7 @@ const SendOtp = () => {
   const [isError, setIsError] = useState(false);
   const [noopt, setnoopt] = useState(false);
   const [otpform, setotpform] = useState(false);
-
+const [coupondata,setCouponData]  = useState([])
   const rewardsData = [
     { title: "Coupon 1", date: "Valid: 12th June 2024", discount: "25% Off", id: "1" },
     { title: "Coupon 2", date: "Valid: 12th June 2024", discount: "25% Off", id: "1" },
@@ -46,7 +46,7 @@ const SendOtp = () => {
   const handleMobileNumberChange = (event) => {
     const value = event.target.value;
     setIsError(false);
-    if (value && value.length > 10) {
+    if (value && value.length > 11) {
       setError('Mobile number must be 10 digits.');
     } else {
       setError('');
@@ -57,16 +57,51 @@ const SendOtp = () => {
 
 
   const handleOtpChange = (event) => {
+   
+   
     const value = event.target.value;
-    setnoopt(false);
-    setOtp(value);
+    setIsError(false);
+    if (value && value.length > 9) {
+      setverifyotperrmsg('otp should be 8 digits only');
+    } else {
+      setError('');
+      setotperror("")
+      setOtp(value);
+      setverifyotperrmsg("")
+      setnoopt(false);
+    }
+
   };
 
-  const handleResendClick = () => {
-   
+  const handleResendClick = async () => {
+   setOtp("")
     setIsmobileNumeber(false)
     setotpform(false)
-
+    setverifyotperrmsg("")
+  //   handlemobilenumberSubmit()
+  const requestData = {
+    mobile_number:mobile,
+    store_url:window.location.origin,
+    country_code: selectedCountry,
+  };
+  await axios.post(`${PRDOUCTION_VAR.PRDOUCTION_URL}/api/ewards/customer-get-loyalty-info`, requestData)
+  .then((response) => {
+  //  setSuccessMessage(response.message);
+    // setError('');
+    //  setotpsucmsg(response.data.otpResponse.response.message);
+     setotpsucmsg(response.data.otpResponse.response.message)
+    console.log(response.data.otpResponse.response.message)
+  
+     setIsmobileNumeber(true)
+  })
+  .catch((error) => {
+  
+    // setotperror(error.response.data.resultMessage.en);
+    // console.log(error.message)
+     console.log(error.response.data.resultMessage.en)
+     setotperror(error.response.data.resultMessage.en)
+    setIsmobileNumeber(true)
+  });
   };
 
   const handleInputClick = () => {
@@ -101,13 +136,6 @@ const SendOtp = () => {
         store_url:window.location.origin,
         country_code: selectedCountry,
       };
-    
-  //   const rewardsData ={
-  //     "customer_key": "Shopify_test",
-  //     "merchant_id": "15441607",
-  //     "mobile": "8553831358",
-  //     "country_code": "91"
-  // }
      await axios.post(`${PRDOUCTION_VAR.PRDOUCTION_URL}/api/ewards/customer-get-loyalty-info`, requestData)
         .then((response) => {
         //  setSuccessMessage(response.message);
@@ -124,13 +152,21 @@ const SendOtp = () => {
           // console.log(error.message)
            console.log(error.response.data.resultMessage.en)
            setotperror(error.response.data.resultMessage.en)
-          setIsmobileNumeber(false)
+          setIsmobileNumeber(true)
         });
       }
   };
   const handlegetloyaypoints = (event) => {
-    event.preventDefault();
-    if (otp && selectedCountry && mobile) {
+     event.preventDefault();
+    if (   otp.length !== 8) {
+     setverifyotperrmsg('otp should be 8 digits only');
+  
+      return;
+    } 
+    else {
+      setverifyotperrmsg("")
+    }
+    if (otp) {
       const requestData = {
         mobile_number: mobile,
         country_code: selectedCountry,
@@ -144,7 +180,8 @@ const SendOtp = () => {
           setverifyotpsucmsg(response.data);
           setverifyotperrmsg("");
            setotpform(true);
-          console.log(response.data.loyalyInfo)
+          console.log(response.data.loyaltyInfo)
+          setCouponData(requestData?.data?.loyaltyInfo)
           setShowCoupons(true); // Set showCoupons to true on successful verification
         })
         .catch((error) => {
@@ -159,26 +196,13 @@ const SendOtp = () => {
   
     
   };
-  // useEffect(() => {
-  //   let timeoutId;
-  //   const showText = () => {
-  //     document.getElementById('resendText').style.display = 'block';
-  //     timeoutId = setTimeout(() => {
-  //       document.getElementById('resendText').style.display = 'none';
-  //     }, 3000);
-  //   };
-
-  //   showText();
-  //   return () => clearTimeout(timeoutId);
-  // }, []);
-  console.log(opterrmsg)
   return (
     <>
-      <div>
+      <div style={{display:'flex',flexDirection:'column',position:'relative'}}>
       
-        <form onSubmit={handlemobilenumberSubmit}>
-          <div className= {!otpsucmsg   ||  !ismobileNumber ? "mobile-otp-container" :"mobile-otp-container-blur"}>
-            <div class="wc-block-components-text-input wc-block-components-totals-coupon__input selectcontrol">
+        <form onSubmit={handlemobilenumberSubmit} style={{display:'flex',flexDirection:"column",width:"100%",marginBottom:"10px"}}>
+          <div className= {!otpsucmsg  ||  !ismobileNumber ? "mobile-otp-container" :"mobile-otp-container-blur"}>
+            <div class="wc-block-components-text-input  selectcontrol">
               <input
                 type='text'
                 value={selectedCountry}
@@ -201,18 +225,19 @@ const SendOtp = () => {
                
               />
                <label
-                htmlFor="0-mobile"
-                id="0-mobile-label"
-                className={`${mobile || document.activeElement === document.getElementById('0-mobile') ? 'focused' : 'centered'}`}
-              >
-                Mobile Number
-              </label>
+  htmlFor="0-mobile"
+  id="0-mobile-label"
+  className={`mobile-label ${mobile || document.activeElement === document.getElementById('0-mobile') ? 'focused' : ''}`}
+>
+  Enter Mobile
+</label>
+
             </div>
             <div className='otpcontainer'>
               <button
                 disabled={ismobileNumber}
-                type="submit"
-               className={ ismobileNumber ? "wp-element-button-disabled otp-send-button" :"wp-element-button-able otp-send-button"}
+                 type="submit"
+              className={ ismobileNumber ? "wp-element-button-disabled otp-send-button" :"wp-element-button-able otp-send-button"}
               >
                 <span class="">Receive OTP</span>
               </button>
@@ -220,13 +245,13 @@ const SendOtp = () => {
           </div>
           { isError ? <p  className='error-msg-outlineing wc-block-components-validation-error'>Please enter mobile number</p> : error ?  <p  className='error-msg-outlineing wc-block-components-validation-error error-msg-outlineing'>{error}</p> : opterrmsg ? <p class="wc-block-components-validation-error error-msg-outlineing">{opterrmsg}</p> : <p className="wc-block-components-validation-success error-msg-outlineing">{otpsucmsg}</p>}
         
-          {/* {opterrmsg === "Customer not found." ? (
+          {opterrmsg === "Customer not found." ? (
         <a href={`${window.location.origin}/my-account/`}>
           Don't have an account? Create one here.
         </a>
       ) : (
         ""
-      )}   */}
+      )}  
         <div className='otpbtncontianer-responsive' disabled={!ismobileNumber}>
           <button
             type='submit'
@@ -240,12 +265,14 @@ const SendOtp = () => {
       </div>
    
       {otpsucmsg && (
-        <form disabled={otpform} onSubmit={handlegetloyaypoints}>
+        <form disabled={otpform} onSubmit={handlegetloyaypoints} style={{display:'flex',marginBottom:'0px',width:'100%'}}>
           <div>
             <div className= {!verifyotpsusmsg || !otpform? "mobile-otp-container" :"mobile-otp-container-blur"}>
               <div className={`wc-block-components-text-input ${noopt ? 'has-error' : ''}`}>
-                <label htmlFor="otp" id="otp-lable" className={otp || document.activeElement === document.getElementById('otp') ? 'focused' : ''}>
-                  Enter otp
+                <label htmlFor="otp" id="otp-lable" 
+  className={`mobile-label ${otp|| document.activeElement === document.getElementById('otp') ? 'focused' : ''}`}
+  >
+                  Enter OTP
                 </label>
                 <input
                
@@ -265,9 +292,9 @@ const SendOtp = () => {
                 </button>
               </div>
             </div>
-            {noopt && (
-              <p style={{ paddingLeft: "100px" }} className= 'error-msg-outlineing wc-block-components-validation-error'>Please enter otp</p>
-            )}
+           
+                      { noopt ? <p  className='error-msg-outlineing wc-block-components-validation-error'>Please enter OTP</p> : verifyotperrmsg ? <p  className='error-msg-outlineing wc-block-components-validation-error'>{verifyotperrmsg}</p>:""}
+
              <div className='otpbtncontianer-responsive' disabled={!ismobileNumber}>
           <button
             
@@ -282,14 +309,14 @@ const SendOtp = () => {
         </form>
       )}
 
-      {opterrmsg && (
+      {otpsucmsg && (
         <p id="resendText" className='resendotptext' >
-          Don't Receive an OTP on your mobile?{' '}
+          Didn't Receive?{' '}
           <span className='resend-otp-text' onClick={handleResendClick}>Resend OTP</span>
         </p>
       )}
 
-      {showCoupons && verifyotpsusmsg && <Coupons rewardsData={rewardsData} tokensData={tokensData} />}
+      {showCoupons && verifyotpsusmsg && <Coupons rewardsData={rewardsData} tokensData={tokensData}coupondata ={coupondata}  />}
     </>
   );
 };
