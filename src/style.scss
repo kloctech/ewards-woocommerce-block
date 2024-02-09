@@ -745,25 +745,7 @@ display: none;
     cursor: not-allowed;
      text-decoration: none;
   }
-  wp-element-button-able:hover{
-    background-color: var(--wp--preset--color--contrast);
-    border-radius: 0.33rem;
-    border-color: var(--wp--preset--color--contrast);
-    border-width: 0;
-    color: var(--wp--preset--color--base);
-    font-family: inherit;
-    font-size: var(--wp--preset--font-size--small);
-    font-style: normal;
-    font-weight: 500;
-    line-height: inherit;
-    padding-top: 0.6rem;
-    padding-right: 1rem;
-    padding-bottom: 0.6rem;
-    padding-left: 1rem;
-   
-    cursor: not-allowed;
-     text-decoration: none;
-  }
+ 
  .error-msg-outlineing{
   padding-left: 120px;
   margin-top: 20px;

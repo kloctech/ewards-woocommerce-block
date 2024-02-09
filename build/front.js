@@ -435,6 +435,7 @@ const SendOtp = () => {
   const [verifyotpsusmsg, setverifyotpsucmsg] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
   const [verifyotperrmsg, setverifyotperrmsg] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
   // const [isFrozen, setFrozen] = useState(false);
+  const [showresendotp, setShowresendotp] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [ismobileNumber, setIsmobileNumeber] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [otp, setOtp] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
   const [showCoupons, setShowCoupons] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
@@ -499,8 +500,6 @@ const SendOtp = () => {
     if (value && value.length > 9) {
       setverifyotperrmsg('otp should be 8 digits only');
     } else {
-      setError('');
-      setotperror("");
       setOtp(value);
       setverifyotperrmsg("");
       setnoopt(false);
@@ -508,10 +507,8 @@ const SendOtp = () => {
   };
   const handleResendClick = async () => {
     setOtp("");
-    setIsmobileNumeber(false);
     setotpform(false);
     setverifyotperrmsg("");
-    //   handlemobilenumberSubmit()
     const requestData = {
       mobile_number: mobile,
       store_url: window.location.origin,
@@ -564,6 +561,8 @@ const SendOtp = () => {
         // setError('');
         //  setotpsucmsg(response.data.otpResponse.response.message);
         setotpsucmsg(response.data.otpResponse.response.message);
+        setresendotp(true);
+        setShowresendotp(true);
         console.log(response.data.otpResponse.response.message);
         setIsmobileNumeber(true);
       }).catch(error => {
@@ -571,7 +570,6 @@ const SendOtp = () => {
         // console.log(error.message)
         console.log(error.response.data.resultMessage.en);
         setotperror(error.response.data.resultMessage.en);
-        setIsmobileNumeber(true);
       });
     }
   };
@@ -594,9 +592,12 @@ const SendOtp = () => {
         setverifyotpsucmsg(response.data);
         setverifyotperrmsg("");
         setotpform(true);
+        setresendotp(false);
         console.log(response.data.loyaltyInfo);
         setCouponData(requestData?.data?.loyaltyInfo);
-        setShowCoupons(true); // Set showCoupons to true on successful verification
+        setShowCoupons(true);
+        setShowresendotp(false);
+        // Set showCoupons to true on successful verification
       }).catch(error => {
         console.error(error.response.data.resultMessage.en);
         setverifyotperrmsg(error.response.data.resultMessage.en);
@@ -722,7 +723,7 @@ const SendOtp = () => {
     class: otpform ? "otpbtn  wc-block-components-button wp-element-button-disabled" : "otpbtn  wc-block-components-button wp-element-button-able"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     class: "wc-block-components-button__text"
-  }, "Verify OTP"))))), otpsucmsg && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+  }, "Verify OTP"))))), showresendotp && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     id: "resendText",
     className: "resendotptext"
   }, "Didn't Receive?", ' ', (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {

@@ -12,6 +12,7 @@ const SendOtp = () => {
   const [verifyotpsusmsg, setverifyotpsucmsg] = useState('');
   const [verifyotperrmsg, setverifyotperrmsg] = useState('');
   // const [isFrozen, setFrozen] = useState(false);
+   const[showresendotp,setShowresendotp] = useState(false)
   const [ismobileNumber,setIsmobileNumeber]  = useState(false)
   const [otp, setOtp] = useState('');
   const [showCoupons, setShowCoupons] = useState(false);
@@ -64,8 +65,7 @@ const [coupondata,setCouponData]  = useState([])
     if (value && value.length > 9) {
       setverifyotperrmsg('otp should be 8 digits only');
     } else {
-      setError('');
-      setotperror("")
+      
       setOtp(value);
       setverifyotperrmsg("")
       setnoopt(false);
@@ -75,10 +75,8 @@ const [coupondata,setCouponData]  = useState([])
 
   const handleResendClick = async () => {
    setOtp("")
-    setIsmobileNumeber(false)
     setotpform(false)
     setverifyotperrmsg("")
-  //   handlemobilenumberSubmit()
   const requestData = {
     mobile_number:mobile,
     store_url:window.location.origin,
@@ -142,6 +140,8 @@ const [coupondata,setCouponData]  = useState([])
           // setError('');
           //  setotpsucmsg(response.data.otpResponse.response.message);
            setotpsucmsg(response.data.otpResponse.response.message)
+           setresendotp(true)
+ setShowresendotp(true)
           console.log(response.data.otpResponse.response.message)
         
            setIsmobileNumeber(true)
@@ -152,7 +152,7 @@ const [coupondata,setCouponData]  = useState([])
           // console.log(error.message)
            console.log(error.response.data.resultMessage.en)
            setotperror(error.response.data.resultMessage.en)
-          setIsmobileNumeber(true)
+          
         });
       }
   };
@@ -180,9 +180,12 @@ const [coupondata,setCouponData]  = useState([])
           setverifyotpsucmsg(response.data);
           setverifyotperrmsg("");
            setotpform(true);
+           setresendotp(false)
           console.log(response.data.loyaltyInfo)
           setCouponData(requestData?.data?.loyaltyInfo)
-          setShowCoupons(true); // Set showCoupons to true on successful verification
+          setShowCoupons(true);
+ setShowresendotp(false)
+ // Set showCoupons to true on successful verification
         })
         .catch((error) => {
           console.error(error.response.data.resultMessage.en);
@@ -309,7 +312,7 @@ const [coupondata,setCouponData]  = useState([])
         </form>
       )}
 
-      {otpsucmsg && (
+      {showresendotp && (
         <p id="resendText" className='resendotptext' >
           Didn't Receive?{' '}
           <span className='resend-otp-text' onClick={handleResendClick}>Resend OTP</span>
