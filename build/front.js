@@ -197,8 +197,10 @@ const Coupons = ({
     className: `points-redem-container wc-block-components-text-input ${iscouponcode ? 'has-error' : ''}`
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
     htmlFor: "0-coupon-code",
-    id: "coupon-code-lable",
-    className: `${couponCode || document.activeElement === document.getElementById('0-coupon-code') ? 'focused' : 'centered'}`
+    id: "coupon-code-lable"
+    // className={`${couponCode || document.activeElement === document.getElementById('0-coupon-code') ? 'focused' : 'centered'}`}
+    ,
+    className: `mobile-label ${otp || document.activeElement === document.getElementById('0-coupon-code') ? 'focused' : ''}`
   }, "Coupon code"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "text",
     id: "0-coupon-code",
@@ -308,7 +310,7 @@ const AvailblePoints = ({
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
     htmlFor: "0-coupon-points",
     id: "coupon-points-lable",
-    className: `${couponPoints || document.activeElement === document.getElementById('0-coupon-points') ? 'focused' : 'centered'}`
+    className: `mobile-label ${otp || document.activeElement === document.getElementById('0-coupon-points') ? 'focused' : ''}`
   }, "Coupon Points"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "text",
     id: "0-coupon-points",
@@ -435,6 +437,7 @@ const SendOtp = () => {
   const [verifyotpsusmsg, setverifyotpsucmsg] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
   const [verifyotperrmsg, setverifyotperrmsg] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
   // const [isFrozen, setFrozen] = useState(false);
+  const [showResendOtp, setShowResendOtp] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [ismobileNumber, setIsmobileNumeber] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [otp, setOtp] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
   const [showCoupons, setShowCoupons] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
@@ -529,7 +532,7 @@ const SendOtp = () => {
       // console.log(error.message)
       console.log(error.response.data.resultMessage.en);
       setotperror(error.response.data.resultMessage.en);
-      setIsmobileNumeber(true);
+      setIsmobileNumeber(false);
     });
   };
   const handleInputClick = () => {
@@ -565,13 +568,14 @@ const SendOtp = () => {
         //  setotpsucmsg(response.data.otpResponse.response.message);
         setotpsucmsg(response.data.otpResponse.response.message);
         console.log(response.data.otpResponse.response.message);
+        setShowResendOtp(true);
         setIsmobileNumeber(true);
       }).catch(error => {
         // setotperror(error.response.data.resultMessage.en);
         // console.log(error.message)
         console.log(error.response.data.resultMessage.en);
         setotperror(error.response.data.resultMessage.en);
-        setIsmobileNumeber(true);
+        setIsmobileNumeber(false);
       });
     }
   };
@@ -597,6 +601,7 @@ const SendOtp = () => {
         console.log(response.data.loyaltyInfo);
         setCouponData(requestData?.data?.loyaltyInfo);
         setShowCoupons(true); // Set showCoupons to true on successful verification
+        setShowResendOtp(false);
       }).catch(error => {
         console.error(error.response.data.resultMessage.en);
         setverifyotperrmsg(error.response.data.resultMessage.en);
@@ -722,7 +727,7 @@ const SendOtp = () => {
     class: otpform ? "otpbtn  wc-block-components-button wp-element-button-disabled" : "otpbtn  wc-block-components-button wp-element-button-able"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     class: "wc-block-components-button__text"
-  }, "Verify OTP"))))), otpsucmsg && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+  }, "Verify OTP"))))), showResendOtp && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     id: "resendText",
     className: "resendotptext"
   }, "Didn't Receive?", ' ', (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {

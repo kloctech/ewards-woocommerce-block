@@ -55,7 +55,8 @@ const AvailblePoints = ({couponCode, receiveCouponPoints}) => {
         <label
           htmlFor="0-coupon-points"
           id="coupon-points-lable"
-          className={`${couponPoints || document.activeElement === document.getElementById('0-coupon-points') ? 'focused' : 'centered'}`}
+          className={`mobile-label ${otp|| document.activeElement === document.getElementById('0-coupon-points') ? 'focused' : ''}`}
+
         >
           Coupon Points
         </label>

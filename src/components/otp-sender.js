@@ -12,7 +12,7 @@ const SendOtp = () => {
   const [verifyotpsusmsg, setverifyotpsucmsg] = useState('');
   const [verifyotperrmsg, setverifyotperrmsg] = useState('');
   // const [isFrozen, setFrozen] = useState(false);
-  const[showresendotp,setShowresendotp] = useState(false)
+  const[showResendOtp,setShowResendOtp] = useState(false)
 
   const [ismobileNumber,setIsmobileNumeber]  = useState(false)
   const [otp, setOtp] = useState('');
@@ -102,7 +102,7 @@ const [coupondata,setCouponData]  = useState([])
     // console.log(error.message)
      console.log(error.response.data.resultMessage.en)
      setotperror(error.response.data.resultMessage.en)
-    setIsmobileNumeber(true)
+    setIsmobileNumeber(false)
   });
   };
 
@@ -145,7 +145,7 @@ const [coupondata,setCouponData]  = useState([])
           //  setotpsucmsg(response.data.otpResponse.response.message);
            setotpsucmsg(response.data.otpResponse.response.message)
           console.log(response.data.otpResponse.response.message)
-          setShowresendotp(true)
+          setShowResendOtp(true)
            setIsmobileNumeber(true)
         })
         .catch((error) => {
@@ -154,7 +154,7 @@ const [coupondata,setCouponData]  = useState([])
           // console.log(error.message)
            console.log(error.response.data.resultMessage.en)
            setotperror(error.response.data.resultMessage.en)
-          setIsmobileNumeber(true)
+          setIsmobileNumeber(false)
         });
       }
   };
@@ -185,7 +185,7 @@ const [coupondata,setCouponData]  = useState([])
           console.log(response.data.loyaltyInfo)
           setCouponData(requestData?.data?.loyaltyInfo)
           setShowCoupons(true); // Set showCoupons to true on successful verification
-          setShowresendotp(false)
+          setShowResendOtp(false)
         })
         .catch((error) => {
           console.error(error.response.data.resultMessage.en);
@@ -312,7 +312,7 @@ const [coupondata,setCouponData]  = useState([])
         </form>
       )}
 
-      {showresendotp && (
+      {showResendOtp && (
         <p id="resendText" className='resendotptext' >
           Didn't Receive?{' '}
           <span className='resend-otp-text' onClick={handleResendClick}>Resend OTP</span>

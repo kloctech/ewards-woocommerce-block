@@ -177,7 +177,8 @@ console.log(couponCode)
         <label
           htmlFor="0-coupon-code"
           id="coupon-code-lable"
-          className={`${couponCode || document.activeElement === document.getElementById('0-coupon-code') ? 'focused' : 'centered'}`}
+          // className={`${couponCode || document.activeElement === document.getElementById('0-coupon-code') ? 'focused' : 'centered'}`}
+          className={`mobile-label ${otp|| document.activeElement === document.getElementById('0-coupon-code') ? 'focused' : ''}`}
         >
           Coupon code
         </label>
