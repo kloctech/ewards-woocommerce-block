@@ -12,6 +12,8 @@ const SendOtp = () => {
   const [verifyotpsusmsg, setverifyotpsucmsg] = useState('');
   const [verifyotperrmsg, setverifyotperrmsg] = useState('');
   // const [isFrozen, setFrozen] = useState(false);
+  const[showresendotp,setShowresendotp] = useState(false)
+
   const [ismobileNumber,setIsmobileNumeber]  = useState(false)
   const [otp, setOtp] = useState('');
   const [showCoupons, setShowCoupons] = useState(false);
@@ -143,7 +145,7 @@ const [coupondata,setCouponData]  = useState([])
           //  setotpsucmsg(response.data.otpResponse.response.message);
            setotpsucmsg(response.data.otpResponse.response.message)
           console.log(response.data.otpResponse.response.message)
-        
+          setShowresendotp(true)
            setIsmobileNumeber(true)
         })
         .catch((error) => {
@@ -183,6 +185,7 @@ const [coupondata,setCouponData]  = useState([])
           console.log(response.data.loyaltyInfo)
           setCouponData(requestData?.data?.loyaltyInfo)
           setShowCoupons(true); // Set showCoupons to true on successful verification
+          setShowresendotp(false)
         })
         .catch((error) => {
           console.error(error.response.data.resultMessage.en);
@@ -309,7 +312,7 @@ const [coupondata,setCouponData]  = useState([])
         </form>
       )}
 
-      {otpsucmsg && (
+      {showresendotp && (
         <p id="resendText" className='resendotptext' >
           Didn't Receive?{' '}
           <span className='resend-otp-text' onClick={handleResendClick}>Resend OTP</span>
