@@ -41,10 +41,10 @@ function test_block_front_scipts(){
 		$asset_file_front['version']
 	);
     wp_localize_script('test-block-scripts-front','PRDOUCTION_VAR',array(
-        "PRDOUCTION_URL" => "https://d-ewards-woocommerce.klocapps.com"
+        "PRDOUCTION_URL" => "https://fd39-119-82-111-138.ngrok-free.app"
     ));
     // wp_enqueue_style('test-block-style-front', plugin_dir_url(__FILE__) . 'node_modules/@wordpress/components/build-style/style.css');
-    wp_enqueue_style('test-block-style-front-v2', plugin_dir_url(__FILE__) . 'build/style-front.css');
+    wp_enqueue_style('test-block-style-front-v2', plugin_dir_url(__FILE__) . 'build/front.css');
     // wp_enqueue_style('test-block-style-front-v2', plugin_dir_url(__FILE__) . 'build/style.css');
 }
 /**

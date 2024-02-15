@@ -1,17 +1,14 @@
 import React,{useState} from 'react'
-import "../style.scss";
 
-const AvailblePoints = ({couponCode, receiveCouponPoints}) => {
+import '../styles/couponpoints/couponpoints.scss'
+const AvailblePoints = ({couponCode, receiveCouponPoints,couponData}) => {
    const [couponPoints,SetCouponPoints] = useState("")
    const [iscouponpoints,Setiscouponpoints] =  useState(false)
    const [isCouponpointsDisable, setIsCouponpointsDisabled] = useState(false);
    const hanldeCoupons =  (event) =>{
     SetCouponPoints(event.target.value)
-
       Setiscouponpoints(false)
       receiveCouponPoints(event.target.value);
-    
-     
     }
     const handleCouponPointsInputClick = () => {
       document.getElementById('coupon-points-lable').classList.add('focused');
@@ -19,21 +16,10 @@ const AvailblePoints = ({couponCode, receiveCouponPoints}) => {
     const handleCouponPointsInputBlur = () => {
       Setiscouponpoints(!couponPoints);
     };
-  
    const handlesubmitcouponpoints =(event)=>{
     event.preventDefault()
-      setIsCouponpointsDisabled(true);
-     
-
+      setIsCouponpointsDisabled(true)
    }
-  //  const handleclickcouponpoints = () => {
-  //   const confirmation = window.confirm("You can't re-enter your points. Are you sure want to redeem?");
-  
-  //   if (confirmation) {
-  //     setIsCouponpointsDisabled(true);
-  //   }
-  // };
-
   return (
     <div>
        <p style={{ fontWeight: "bold" }}>Redeem your Loyalty points here</p>
@@ -45,7 +31,7 @@ const AvailblePoints = ({couponCode, receiveCouponPoints}) => {
                 <p  className="availblepointsmarging">Redeemable Balance:</p>
                </div>
                <div>
-               <p  className="availblepointsmarging">100</p>
+               <p  className="availblepointsmarging">{couponData?.points_available}</p>
                 <p  className="availblepointsmarging">80</p>
                </div>
             </div>
@@ -55,7 +41,7 @@ const AvailblePoints = ({couponCode, receiveCouponPoints}) => {
         <label
           htmlFor="0-coupon-points"
           id="coupon-points-lable"
-          className={`mobile-label ${otp|| document.activeElement === document.getElementById('0-coupon-points') ? 'focused' : ''}`}
+          className={`mobile-label ${couponPoints|| document.activeElement === document.getElementById('0-coupon-points') ? 'focused' : ''}`}
 
         >
           Coupon Points
@@ -73,7 +59,7 @@ const AvailblePoints = ({couponCode, receiveCouponPoints}) => {
         />
         <div className='otpcontainer'>
           <button type='submit'
-       className={ isCouponpointsDisable || couponCode ? "wp-element-button-disabled otp-send-button" :"wp-element-button-able otp-send-button"}
+       className={ isCouponpointsDisable || couponCode ? " button-element-disabled otp-send-button" :"button-element-able otp-send-button"}
 
           >
             <span>Credit Redemption</span>
@@ -86,7 +72,9 @@ const AvailblePoints = ({couponCode, receiveCouponPoints}) => {
       )}
          </div>
          <div className='otpbtncontianer-responsive'>
-<button  type='submit'  class="creditpointsbtn components-button wc-block-components-button wp-element-button wc-block-cart__submit-button contained"><span class="wc-block-components-button__text">Credit Redemption</span></button>
+<button  type='submit'         
+className={ isCouponpointsDisable || couponCode ? " button-element-disabled creditpointsbtn" :"button-element-able creditpointsbtn"}
+><span class="wc-block-components-button__text">Credit Redemption</span></button>
 </div> 
 </form>     
   </div>
