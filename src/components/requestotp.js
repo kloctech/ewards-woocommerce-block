@@ -96,7 +96,7 @@ const Requestotp = () => {
                  type="submit"
               className={ mobileOtpForm ? "button-element-disabled otp-send-button" :"button-element-able otp-send-button"}
               >
-                <span class="">Receive OTP</span>
+                <span class="wc-block-components-button__text">Receive OTP</span>
               </button>
             </div>
           </div>
@@ -117,7 +117,7 @@ const Requestotp = () => {
             // onClick={sendOtpRequest}
           class= { mobileOtpForm ?  "otpbtn  button-element-disabled" : "otpbtn  button-element-able" }
           >
-            <span>Receive OTP</span>
+            <span class="wc-block-components-button__text">Receive OTP</span>
           </button>
         </div>
         </form>

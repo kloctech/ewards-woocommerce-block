@@ -512,7 +512,7 @@ const Requestotp = () => {
     type: "submit",
     className: mobileOtpForm ? "button-element-disabled otp-send-button" : "button-element-able otp-send-button"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    class: ""
+    class: "wc-block-components-button__text"
   }, "Receive OTP")))), noMobileNumber ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "error-msg-outlineing wc-block-components-validation-error"
   }, "Please enter mobile number") : otpErrorMessage ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
@@ -529,7 +529,9 @@ const Requestotp = () => {
     // onClick={sendOtpRequest}
     ,
     class: mobileOtpForm ? "otpbtn  button-element-disabled" : "otpbtn  button-element-able"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "Receive OTP"))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_verify_otp__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    class: "wc-block-components-button__text"
+  }, "Receive OTP"))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_verify_otp__WEBPACK_IMPORTED_MODULE_1__["default"], {
     mobileNumber: mobileNumber,
     otpSuccessMessage: otpSuccessMessage,
     selectedCountry: selectedCountry
@@ -671,9 +673,13 @@ const VerifyOtp = ({
   }, errorMessage) : "", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "otpbtncontianer-responsive"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-    type: "submit",
+    type: "submit"
+    // onClick={sendOtpRequest}
+    ,
     class: otpForm ? "otpbtn  button-element-disabled " : "otpbtn   button-element-able"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "Verify OTP"))))), showResendOtp && otpSuccessMessage && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    class: "wc-block-components-button__text"
+  }, "Verify OTP"))))), showResendOtp && otpSuccessMessage && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     id: "resendText",
     className: "resendotptext"
   }, "Didn't Receive?", ' ', (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {

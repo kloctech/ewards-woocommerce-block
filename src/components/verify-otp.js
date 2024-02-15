@@ -87,7 +87,7 @@ const [couponData,setCouponData]  = useState("")
               <div className={`wc-block-components-text-input ${noOtpMessage ? 'has-error' : ''}`}>
                 <label htmlFor="otp" id="otp-lable" 
                 className={`mobile-label ${otp|| document.activeElement === document.getElementById('otp') ? 'focused' : ''}`}
-                >
+              >
                   Enter OTP
                 </label>
                 <input
@@ -108,19 +108,23 @@ const [couponData,setCouponData]  = useState("")
                 </button>
               </div>
             </div>
-            { noOtpMessage ? <p  className='error-msg-outlineing wc-block-components-validation-error'>Please enter OTP</p> :
-             errorMessage ? <p  className='error-msg-outlineing wc-block-components-validation-error'>{errorMessage}</p>:""}
+           
+                      { noOtpMessage ? <p  className='error-msg-outlineing wc-block-components-validation-error'>Please enter OTP</p> : errorMessage ? <p  className='error-msg-outlineing wc-block-components-validation-error'>{errorMessage}</p>:""}
+
              <div className='otpbtncontianer-responsive'>
           <button
+            
             type='submit'
+            // onClick={sendOtpRequest}
           class= { otpForm ?  "otpbtn  button-element-disabled " : "otpbtn   button-element-able" }
           >
-            <span >Verify OTP</span>
+            <span class="wc-block-components-button__text">Verify OTP</span>
           </button>
         </div>
           </div>
         </form>
       )}
+
       { showResendOtp &&  otpSuccessMessage && (
         <p id="resendText" className='resendotptext' >
           Didn't Receive?{' '}
