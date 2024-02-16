@@ -1,7 +1,8 @@
 import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import CountryCodes1 from '../countires.json';
-
+import "../styles/main.scss";
+// import "../styles/"
 import Coupons from './available-coupons';
 
 const SendOtp = () => {
@@ -237,7 +238,7 @@ const [coupondata,setCouponData]  = useState([])
               <button
                 disabled={ismobileNumber}
                  type="submit"
-              className={ ismobileNumber ? "wp-element-button-disabled otp-send-button" :"wp-element-button-able otp-send-button"}
+              className="new-button"
               >
                 <span class="">Receive OTP</span>
               </button>
@@ -260,6 +261,10 @@ const [coupondata,setCouponData]  = useState([])
           >
             <span class="wc-block-components-button__text">Receive OTP</span>
           </button>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+  <button class="btn btn-primary me-md-2" type="button">Button</button>
+  <button class="btn btn-primary" type="button">Button</button>
+</div>
         </div>
         </form>
       </div>
