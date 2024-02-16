@@ -294,19 +294,6 @@
   margin: 0 10px;
 }
 
-.button {
-  cursor: pointer;
-  background-color: #4a463d;
-  border: none;
-  color: black;
-  padding: 10px 15px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  border-radius: 4px;
-}
-
 .title {
   margin: 0px;
 }
@@ -556,7 +543,7 @@ input[type=number] {
 }
 
 .mobile-label.focused {
-  top: -15px; /* Adjust the top position as needed */
+  top: -15px;
   font-size: 16px; /* You can adjust the font size as needed */
   left: 18px;
   padding-bottom: 30px;
@@ -637,25 +624,6 @@ input[type=number] {
 }
 
 .wp-element-button-disabled {
-  background-color: var(--wp--preset--color--contrast);
-  border-radius: 0.33rem;
-  border-color: var(--wp--preset--color--contrast);
-  border-width: 0;
-  color: var(--wp--preset--color--base);
-  font-family: inherit;
-  font-size: var(--wp--preset--font-size--small);
-  font-style: normal;
-  font-weight: 500;
-  line-height: inherit;
-  padding-top: 0.6rem;
-  padding-right: 1rem;
-  padding-bottom: 0.6rem;
-  padding-left: 1rem;
-  cursor: not-allowed;
-  text-decoration: none;
-}
-
-wp-element-button-able:hover {
   background-color: var(--wp--preset--color--contrast);
   border-radius: 0.33rem;
   border-color: var(--wp--preset--color--contrast);
