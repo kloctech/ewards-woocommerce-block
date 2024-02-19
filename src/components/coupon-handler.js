@@ -1,6 +1,7 @@
 
 import { useEffect } from 'react';
-import Requestotp from './requestotp';
+// import Requestotp from './requestotp';
+import Test from './test';
 
 export default function CouponsHandler() {
 useEffect(() => {
@@ -24,8 +25,7 @@ useEffect(() => {
   
     return (
         <>
-    <Requestotp/>
-       
+            <Test/>
         </>
     )
 }
