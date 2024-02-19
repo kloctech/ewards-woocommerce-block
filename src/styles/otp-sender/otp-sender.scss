@@ -1,0 +1,165 @@
+
+@import '../main.scss';
+// @import "../../../node_modules/bootstrap/scss/bootstrap.scss";
+// Functions first
+@import "../../../node_modules/bootstrap/scss/functions";
+
+// Variable overrides second
+// $primary: #900;
+// $enable-shadows: true;
+// $prefix: "mo-";
+
+// Required Bootstrap imports
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "../../../node_modules/bootstrap/scss/variables-dark";
+@import "../../../node_modules/bootstrap/scss/maps";
+@import "../../../node_modules/bootstrap/scss/mixins";
+@import "../../../node_modules/bootstrap/scss/root";
+@import "../../../node_modules/bootstrap/scss/forms";
+@import "../../../node_modules/bootstrap/scss/bootstrap-grid.scss";
+@import "../../../node_modules/bootstrap/scss/bootstrap.scss";
+// @import "../../../node_modules/bootstrap/scss/helpers";
+// @import "../../../node_modules/bootstrap/scss/grid";
+
+.mobile-otp-container{
+  display: flex;
+   align-items: center;
+}
+.mobile-otp-container-blur{
+  display: flex;
+   align-items: center;
+  //  background-color: rgba(255, 255, 255, 0.8);
+  filter: blur(0.8px); 
+}
+.mobile-otp-container-res{
+  display:none
+}
+.select--control-container{
+  @include alignment()
+}
+.selectcontrol{
+  width:6%;
+  height: 3.5em;
+  text-align: center;
+  // margin-bottom: 20px;
+
+}
+
+.otp-send-button{
+  margin-left: 8px;
+  height:10%;  
+}
+.otpbutton {
+  background-color: #4a463d;
+  height: 44px;
+  margin-left: 10px;
+  color: #ffffff;
+  margin-bottom: 10px;
+  width: 13%;
+  border: none;
+}
+
+.otpbutton:hover{
+  background-color: #4a463d;
+}
+@media only screen and (max-width: 912px) {
+  .otpbutton {
+    margin-left: 10px;
+    width: 20%;
+    height: 46px;
+    font-size: 16px;
+    background-color: #4a463d;
+
+  }
+}
+@media screen and (max-width:1024px){
+  .selectcontrol{
+    width: 11%;
+  }
+}
+@media only screen and (max-width: 540px) {
+  
+  .otp-send-button{
+    font-size: 12px;
+   
+  }
+  .selectcontrol{
+    width: 16%;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .otpbutton {
+    margin-left: 10px;
+    width: 40%;
+    font-size: 12px;
+    background-color: #4a463d;
+
+  }
+  .otp-send-button{
+    font-size: 9px;
+    width: 130px;
+  }
+  .selectcontrol{
+    width: 20%;
+  }
+}
+@media  screen and (max-width:375px) {
+  .selectcontrol{
+    width: 25%;
+    margin-bottom: 0px;
+  }
+  .otp-send-button{
+    font-size: 8px;
+    height: 10em;
+   
+  }
+}
+@media only screen and (max-width: 280px) {
+  .otp-send-button{
+    font-size: 6px;
+  }
+  .selectcontrol{
+    width: 70%;
+  }
+}
+  .otpbtn{
+width: 29%;
+display: none;
+  }
+  .verifyotpbtn{
+    width: 100%;
+  }
+  @media  screen and (max-width:540px) {
+    .otpbtn{
+      width: 100%;
+      display: flex;
+    }
+    .verifyotpbtn{
+      width: 100%;
+    }
+  }
+ .error-msg-outlineing{
+  padding-left: 120px;
+  margin-top: 20px;
+ }
+ @media  screen and (max-width:540px) {
+  .error-msg-outlineing{
+    padding-left: 50px;
+  }
+ }
+ @media  screen and (max-width:430px) {
+  .error-msg-outlineing{
+    padding-left: 50px;
+  }
+ }
+ @media  screen and (max-width:280px) {
+  .error-msg-outlineing{
+    padding-left: 10px;
+  }
+ }
+ .resend-otp-text{
+   text-decoration: underline;
+   font-weight: bold;
+   cursor: pointer;
+ }
