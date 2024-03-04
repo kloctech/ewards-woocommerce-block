@@ -1,116 +1,13 @@
-// input[type=text], select {
-//     width: 100%;
-//     padding: 12px 20px;
-//     margin: 8px 0;
-//     display: inline-block;
-//     border: 1px solid #ccc;
-//     border-radius: 4px;
-//     box-sizing: border-box;
-//   }
 
-//   input[type=number], select {
-//     width: 100%;
-//     padding: 12px 20px;
-//     margin: 8px 0;
-//     display: inline-block;
-//     border: 1px solid #ccc;
-//     border-radius: 4px;
-//     box-sizing: border-box;
-//   }
-  
-//   input[type=submit] {
-//     width: 100%;
-//     background-color: #4CAF50;
-//     color: white;
-//     padding: 14px 20px;
-//     margin: 8px 0;
-//     border: none;
-//     border-radius: 4px;
-//     cursor: pointer;
-//   }
-  
-//   input[type=submit]:hover {
-//     background-color: #45a049;
-//   }
+// @import '../main.scss';
 
-$margin-Top:"10px";
-$margin-Bottom:"20px";
-@mixin marginBottom($marginBottom){
-  margin-Bottom:$marginBottom;
-}
-@mixin marginTop($marginTop){
-  margin-top:$marginTop;
-}
-@mixin alignment{
- margin-top: 32px;
- text-align: right;
-}
-.mobile-otp-container{
-  display: flex;
-   align-items: center;
-  
-
-}
-.mobile-otp-container-blur{
-  display: flex;
-   align-items: center;
-  //  background-color: rgba(255, 255, 255, 0.8);
-  filter: blur(0.8px); 
-}
-.mobile-otp-container-res{
-  display:none
-}
-
-.select--control-container{
-  @include alignment()
-}
-.selectcontrol{
-  width: 6%;
-  height: 3.5em;
-  text-align: center;
-  // margin-bottom: 20px;
-
-}
-// @media screen and (max-width:375px){
- 
-//   .selectcontrol{
-//     height: 3.5em;
-//     @include marginTop(20px)
-//   }
-// }
-.otp-send-button{
-  margin-left: 8px;
-  height: 10%;
-}
-.available-balance-container{
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: 250px;
-    height: 80px;
-    cursor: pointer;
-    border: 2px solid #4a463d;
-    color: #161718;
-    border-radius: 10px;
-    background-color: #fff; 
-    padding: 10px;
-}
-// .availble-points-container{
-//   display: flex;
-//   justify-content: space-around;
-//   margin-top: 0px;
-//   text-align: center;
-//   margin-top: 0px;
-// }
-  .availblepointsmarging{
-  
+.availblepointsmarging{
   margin-top: 0px;
   margin-bottom: 0px;
   padding-left: 10px;
    }
   
-.otpbutton {
+.applybutton {
   background-color: #4a463d;
   height: 44px;
   margin-left: 10px;
@@ -120,11 +17,11 @@ $margin-Bottom:"20px";
   border: none;
 }
 
-.otpbutton:hover{
+.applybutton:hover{
   background-color: #4a463d;
 }
 @media only screen and (max-width: 912px) {
-  .otpbutton {
+  .applybutton {
     margin-left: 10px;
     width: 20%;
     height: 46px;
@@ -133,63 +30,15 @@ $margin-Bottom:"20px";
 
   }
 }
-@media screen and (max-width:1024px){
-  .selectcontrol{
-    width: 11%;
-  }
-}
-@media only screen and (max-width: 540px) {
-  
-  .otp-send-button{
-    font-size: 12px;
-   
-  }
-  .selectcontrol{
-    width: 16%;
-  }
-}
-
 @media screen and (max-width: 430px) {
-  .otpbutton {
+  .applybutton {
     margin-left: 10px;
     width: 40%;
     font-size: 12px;
     background-color: #4a463d;
 
   }
-  .otp-send-button{
-    font-size: 9px;
-    width: 130px;
-  }
-  .selectcontrol{
-    width: 20%;
-  }
-}
-@media  screen and (max-width:375px) {
-  .selectcontrol{
-    width: 25%;
-    margin-bottom: 0px;
-  }
-  .otp-send-button{
-    font-size: 8px;
-    height: 10em;
-   
-  }
-}
-@media only screen and (max-width: 360px) {
   
-  
-  
-}
-@media only screen and (max-width: 280px) {
-  
-  .otp-send-button{
-    font-size: 6px;
-   
-  }
-  .selectcontrol{
-    width: 70%;
-  }
 }
 
 .inputboxes{
@@ -205,7 +54,7 @@ $margin-Bottom:"20px";
   overflow-y: scroll;
   scrollbar-width: thin;
   scrollbar-color: #ffffff;
-  height: auto;
+  height: 400px;
   width: 70%;
   border-bottom: 1px solid #333;
   border-left: 1px solid #333;
@@ -214,7 +63,7 @@ $margin-Bottom:"20px";
 .tokes-rewards-coupons-container::-webkit-scrollbar { 
   width: 5px;
 }
-.containertokes-rewards-coupons-container::-webkit-scrollbar-track {
+.tokes-rewards-coupons-container::-webkit-scrollbar-track {
   background: #161518;
 }
 .tokes-rewards-coupons-container::-webkit-scrollbar-thumb {
@@ -226,17 +75,17 @@ $margin-Bottom:"20px";
   background: #070708;
 }
 
-.tokes-rewards-coupons-container::-webkit-scrollbar {
-  width: 8px;
-}
+// .tokes-rewards-coupons-container::-webkit-scrollbar {
+//   width: 8px;
+// }
 
-.tokes-rewards-coupons-container::-webkit-scrollbar-track {
-  background: gray;
-}
+// .tokes-rewards-coupons-container::-webkit-scrollbar-track {
+//   background: gray;
+// }
 
-.tokes-rewards-coupons-container::-webkit-scrollbar-thumb {
-  background: #131216;
-}
+// .tokes-rewards-coupons-container::-webkit-scrollbar-thumb {
+//   background: #131216;
+// }
 
 .tokes-rewards-coupons-container::-webkit-scrollbar-thumb:hover {
   background: #888;
@@ -244,14 +93,14 @@ $margin-Bottom:"20px";
 
 .tokes-rewards-coupons-container {
   scrollbar-width: thin;
-  scrollbar-color: #f1f1f1 #888;
+  scrollbar-color: #0c0c0c #888;
 }
 
 .tokes-rewards-coupons-container:hover {
-  scrollbar-color: #f1f1f1 #555;
+  scrollbar-color: #292828 #555;
 }
 
-.container1 {
+.couponcodecontainer {
   position: relative;
   width: 100px;
   height: 80px;
@@ -263,7 +112,7 @@ $margin-Bottom:"20px";
   );
 }
 
-.triangle {
+.coupondiscountcontainer {
   position: absolute;
   width: 0;
   height: 0;
@@ -271,7 +120,7 @@ $margin-Bottom:"20px";
   z-index: 3;
 }
 
-.text {
+.coupondiscounttext {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -282,13 +131,12 @@ $margin-Bottom:"20px";
 }
 .points-container{
   display: flex;
-
 }
 .points-redem-container{
   display: flex;
   margin-left: 560px;
  width: 40%;
-  justify-content: end;
+  justify-content: flex-end;
 }
 .points-redem-container1{
   display: flex;
@@ -297,12 +145,6 @@ $margin-Bottom:"20px";
 }.points-redem-containe-responsive{
   display: none;
 }
-// @media  screen and (max-width:1366px) {
-//   .points-redem-container{
-// width: 100%;
-// margin-left:600px;
-//   }
-// }
 @media  screen and (max-width:912px) {
   .points-redem-container{
 width:55%;
@@ -331,28 +173,23 @@ margin-left:350px;
 }
 @media  screen and (max-width:768px) {
   
- 
-
   .points-redem-container1{
     margin-left: 50px;
   }
 }
 @media  screen and (max-width:540px) {
-  
- 
-
   .points-redem-container1{
     margin-left: 0px;
   }
 }
 @media screen and (max-width:280px){
 
-    .text{
+    .coupondiscounttext{
       font-size: 10px
     }
   }
   
-.item-row {
+.couponradiobutton {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -376,62 +213,17 @@ margin-left:350px;
   height: 100px;
   margin: 0 10px;
 }
-
-.button{
-  cursor: pointer;
-  background-color:#4a463d;
-  border: none;
-  color:black;
-  padding: 10px 15px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  border-radius: 4px;
-}
-.title{
+.couponname{
 margin: 0px;
 }
-.resend-otp-text{
-  text-decoration: underline;
-  font-weight: bold
-}
 
-.inputfiled{
-  width: 100%;
-}
-.inputfield{
-  width: 278px;
-  height: 42px;
-  margin-bottom: 30px;
-}
-.optinputfield{
-  width: 355px;
-  height: 42px;
-  margin-bottom: 30px;
-  border: none;
-  border-bottom: 1px solid #000;
-  outline: none;
-  
-}
-.textcolor{
-  color: #4a463d;
-  font-size: 24px;
-  font-weight: bold;
-  
-}
-.resendotptext{
-  font-size: 18px;
-}
 @media  screen and (max-width:780px) {
   .available-balance-container{
     width: 265px;
   }
 }
 @media screen and (max-width:430px) {
-  .textcolor{
-   font-size: 16px
-  }
+  
   .available-balance-container{
     width: 220px;
     }
@@ -447,7 +239,7 @@ margin: 0px;
   }
 }
 
-.title{
+.couponname{
   padding: 0px;
   margin: 10px;
   
@@ -485,8 +277,7 @@ padding: 0px !important;
   }
  }
   
- }/* Chrome, Safari, Edge, Opera */
-/* Chrome, Safari, Edge, Opera */
+ }
 input[type=number]::-webkit-outer-spin-button,
 input[type=number]::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -553,9 +344,6 @@ border-bottom: none;
   .topnav{
     width: 100.8%;
   }
-  .points-redem-container1{
-    margin-left: 0px;
-  }
 }
 @media screen  and (max-width:280px){
   .topnav{
@@ -565,31 +353,12 @@ border-bottom: none;
     font-size: 10px;
   }
 }
-.loader-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 5vh;
-}
 
-.loader {
-  border: 8px solid #f3f3f3;
-  border-top: 8px solid #3498db;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
 @media only screen and (max-width: 540px) {
   .tokes-rewards-coupons-container{
   width: 95%;
   }
-   .container1{
+   .couponcodecontainer{
     width: 80px;
     height: 70px;
   
@@ -597,7 +366,7 @@ border-bottom: none;
    
   }
   @media screen and (max-width:430px) {
-    .container1{
+    .couponcodecontainer{
       width: 120px;
       height: 60px;
     }
@@ -605,70 +374,55 @@ border-bottom: none;
   }
   
   @media screen and (max-width:360px) {
-    .container1{
+    .couponcodecontainer{
       width: 120px;
       height: 60px;
     }
-    .text{
+    .coupondiscounttext{
       font-size:12px;
     }
     
   }
   @media screen and (max-width:280px){
-  .container1{
+  .couponcodecontainer{
     width: 120px;
     height: 50px;
   }
-    .text{
+    .coupondiscounttext{
       font-size: 8px;
     }
-    .otpbutton{
+    .applybutton{
       width: 40%;
       font-size: 8px;
       height: 24px;
     }
     
   }
- 
-  .wc-block-components-text-input {
-    position: relative;
-    margin-bottom: 20px; /* Adjust spacing as needed */
-  }
+  // .lable {
+  //   position: absolute;
+  //   top: 50%;
+  //   left: 40px; /* Adjust the left position as needed */
+  //   transform: translateY(-100%);
+  //   pointer-events: none;
+  //   transition: top 0.3s ease, font-size 0.3s ease;
+  // }
   
-  label {
-    position: absolute;
-    top: 50%;
-    left: 40px; /* Adjust the left position as needed */
-    transform: translateY(-100%);
-    pointer-events: none;
-    transition: top 0.3s ease, font-size 0.3s ease;
-  }
-  
-  label.focused {
-    top: -15px; /* Adjust the top position as needed */
-    font-size: 16px; /* You can adjust the font size as needed */
-    left: 18px;
-    padding-bottom: 30px;
-  }
-  .centered {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: top 0.3s ease, transform 0.3s ease;
-  }
+  // .mobile-label.focused {
+  //   top: -15px; 
+  //   font-size: 16px; /* You can adjust the font size as needed */
+  //   left: 18px;
+  //   padding-bottom: 30px;
+  // }
+  // .centered {
+  //   position: absolute;
+  //   top: 50%;
+  //   transform: translateY(-50%);
+  //   transition: top 0.3s ease, transform 0.3s ease;
+  // }
  
-  label.not-focused {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: top 0.3s ease, transform 0.3s ease;
-  }
-  .otpcontainer{
-    display: flex;
-  }
-  .otpbtncontianer-responsive{
-    display: none;
-  }
+  
+
+
   .creditredemption-container{
     display: flex;
   }
@@ -685,72 +439,16 @@ display: none;
   }
   
   @media  screen and (max-width:540px) {
-    .otpbtncontianer-responsive{
-      display: flex;
-    }
+   
     .points-container{
       flex-direction: column;
       
     }
-    .otpcontainer{
-      display: none
-    }
-    .otpbtn{
-      width: 100%;
-      display: flex;
-    }
-    .verifyotpbtn{
-      width: 100%;
-    }
-    .creditpointsbtn{
-      width: 100%;
-    }
-  }
-
-  .wp-element-button-able{
     
-    // background-color: var(--wp--preset--color--contrast);
-    background-color: #111111;
-    border-radius: 0.33rem;
-    border-color: var(--wp--preset--color--contrast);
-    border-width: 0;
-    // color: var(--wp--preset--color--base);
-    color: #f9f9f9;
-    font-family: inherit;
-    font-size: var(--wp--preset--font-size--small);
-    font-style: normal;
-    font-weight: 500;
-    line-height: inherit;
-    padding-top: 0.6rem;
-    padding-right: 1rem;
-    padding-bottom: 0.6rem;
-    padding-left: 1rem;
-    cursor: pointer;
-    text-decoration: none;
-  }
-  .wp-element-button-disabled{
-    
-    background-color: var(--wp--preset--color--contrast);
-    border-radius: 0.33rem;
-    border-color: var(--wp--preset--color--contrast);
-    border-width: 0;
-    color: var(--wp--preset--color--base);
-    font-family: inherit;
-    font-size: var(--wp--preset--font-size--small);
-    font-style: normal;
-    font-weight: 500;
-    line-height: inherit;
-    padding-top: 0.6rem;
-    padding-right: 1rem;
-    padding-bottom: 0.6rem;
-    padding-left: 1rem;
-   
-    cursor: not-allowed;
-     text-decoration: none;
   }
  .error-msg-outlineing{
-  padding-left: 100px;
-  margin-top: -10px;
+  padding-left: 120px;
+  margin-top: 20px;
  }
 .coupon-points-error-msg-otulineing{
 padding-left: 130px;
