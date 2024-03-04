@@ -2,10 +2,10 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/components/coupon-handler.js":
-/*!******************************************!*\
-  !*** ./src/components/coupon-handler.js ***!
-  \******************************************/
+/***/ "./src/components/index.js":
+/*!*********************************!*\
+  !*** ./src/components/index.js ***!
+  \*********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -14,147 +14,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _test__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./test */ "./src/components/test.js");
 
-
-// import Requestotp from './requestotp';
 
 function CouponsHandler() {
+  const [cartValue, setCartValue] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
+  const [storeUrl, setStoreUrl] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(window.location.origin);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    const handleBeforeUnload = event => {
-      const confirmationMessage = 'Are you sure you want to reload?';
-      event.returnValue = confirmationMessage;
-      return confirmationMessage;
-    };
-    const confirmReload = () => {
-      if (window.confirm('Are you sure you want to reload?')) {
-        window.removeEventListener('beforeunload', handleBeforeUnload);
-        window.location.reload();
+    const fetchCartValue = () => {
+      const cartValueElement = document.querySelector(".wc-block-components-totals-item__value");
+      if (cartValueElement) {
+        setCartValue(cartValueElement.textContent);
       }
     };
-    window.addEventListener('beforeunload', handleBeforeUnload);
-    return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
-    };
+    const timerId = setTimeout(fetchCartValue, 1000);
+    return () => clearTimeout(timerId);
   }, []);
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_test__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+  const containerStyle = {
+    width: "100%",
+    height: "95vh",
+    border: "none"
+  };
+  const src = `https://cd1d-2401-4900-4bbe-de2b-b00b-3253-bfc3-9b2f.ngrok-free.app?cart=${encodeURIComponent(cartValue)}&storeUrl=${storeUrl}`;
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("iframe", {
+    src: src,
+    style: containerStyle,
+    title: "External Content"
+  });
 }
-
-/***/ }),
-
-/***/ "./src/components/test.js":
-/*!********************************!*\
-  !*** ./src/components/test.js ***!
-  \********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _styles_test_test_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../styles/test/test.scss */ "./src/styles/test/test.scss");
-
-
-const Test = () => {
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    class: "container text-center"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    class: "row"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    class: "col-sm-8"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    class: "row g-2"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    class: "col-md"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    class: "form-floating"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("select", {
-    class: "form-select",
-    id: "floatingSelectGrid"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("option", {
-    selected: true
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("option", {
-    value: "91"
-  }, "91")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
-    for: "floatingSelectGrid"
-  }, "Country"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    class: "col-md"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    class: "form-floating"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
-    type: "email",
-    class: "form-control",
-    id: "floatingInputGrid",
-    placeholder: "name@example.com",
-    value: ""
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
-    for: "floatingInputGrid"
-  }, "Email address"))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    class: "col-sm-4"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-    type: "button",
-    class: "btn btn-primary"
-  }, "Dark"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    class: "input-group mb-3"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    class: "input-group-text"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    class: "form-floating"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("select", {
-    class: "form-select",
-    id: "floatingSelectGrid"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("option", {
-    selected: true
-  }, "Open this select menu"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("option", {
-    value: "1"
-  }, "One"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("option", {
-    value: "2"
-  }, "Two"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("option", {
-    value: "3"
-  }, "Three")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
-    for: "floatingSelectGrid"
-  }, "Works with selects"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
-    type: "text",
-    class: "form-control",
-    "aria-label": "Text input with checkbox"
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    class: "input-group"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    class: "input-group-text"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
-    class: "form-check-input mt-0",
-    type: "radio",
-    value: "",
-    "aria-label": "Radio button for following text input"
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
-    type: "text",
-    class: "form-control",
-    "aria-label": "Text input with radio button"
-  })))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    class: "row"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    class: "col-sm"
-  }, "col-sm"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    class: "col-sm"
-  }, "col-sm"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    class: "col-sm"
-  }, "col-sm"))));
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Test);
-
-/***/ }),
-
-/***/ "./src/styles/test/test.scss":
-/*!***********************************!*\
-  !*** ./src/styles/test/test.scss ***!
-  \***********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
 
 /***/ }),
 
@@ -257,17 +143,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "react-dom");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components_coupon_handler__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/coupon-handler */ "./src/components/coupon-handler.js");
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components */ "./src/components/index.js");
 
 
 
+
+// import CouponsHandler from './components';
 
 window.addEventListener('DOMContentLoaded', () => {
   const cards = document.querySelectorAll('.mt-block-user-card-wrapper');
   if (cards) {
     Array.from(cards).forEach(card => {
       const attributes = JSON.parse(card.dataset.mtAttributes);
-      react_dom__WEBPACK_IMPORTED_MODULE_1___default().hydrate((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_coupon_handler__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      react_dom__WEBPACK_IMPORTED_MODULE_1___default().hydrate((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components__WEBPACK_IMPORTED_MODULE_2__["default"], {
         attributes: attributes
       }), card);
     });

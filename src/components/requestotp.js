@@ -3,13 +3,17 @@ import axios from 'axios';
 import './verify-otp'
 import '../styles/otp-sender/otp-sender.scss'
 import Verifyotp from './verify-otp';
+import Loader from './loader';
 const Requestotp = () => {
   const [mobileNumber, setMobileNumber] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
   const [selectedCountry, setSelectedCountry] = useState("91");
   const [otpSuccessMessage,setOtpSuccessMessage] = useState("")
   const [otpErrorMessage,setOtpErrorMessage] = useState("")
   const [mobileOtpForm ,setMobileOtpForm] = useState(false)
   const [noMobileNumber,setNoMobileNumber] = useState(false)
+  
   const handleCountryChange = (selectedValue) => {
     setSelectedCountry(selectedValue);
   };
@@ -47,8 +51,10 @@ const Requestotp = () => {
       };
      await axios.post(`${PRDOUCTION_VAR.PRDOUCTION_URL}/api/ewards/customer-get-loyalty-info`, requestData)
         .then((response) => {
+          setIsLoading(true)
         setOtpSuccessMessage(response.data.otpResponse.response.message)
            setMobileOtpForm(true)
+          
         })
         .catch((error) => {
            setOtpErrorMessage(error.response.data.resultMessage.en)
@@ -56,6 +62,9 @@ const Requestotp = () => {
         });
       }
   };
+  const a =  document.getElementsByClassName("wc-block-components-totals-item__value")
+
+
   return (
     <>
       <div style={{display:'flex',flexDirection:'column',position:'relative'}}>
@@ -96,7 +105,7 @@ const Requestotp = () => {
                  type="submit"
               className={ mobileOtpForm ? "button-element-disabled otp-send-button" :"button-element-able otp-send-button"}
               >
-                <span class="wc-block-components-button__text">Receive OTP</span>
+                <span className="wc-block-components-button__text">Receive OTP</span>
               </button>
             </div>
           </div>
@@ -122,7 +131,9 @@ const Requestotp = () => {
         </div>
         </form>
       </div>
-    <Verifyotp mobileNumber={mobileNumber} otpSuccessMessage={otpSuccessMessage} selectedCountry = {selectedCountry} />
+      {otpSuccessMessage==="" && isLoading  ? <Loader/>  : <Verifyotp mobileNumber={mobileNumber} otpSuccessMessage={otpSuccessMessage} selectedCountry = {selectedCountry} /> }
+     
+   
     </>
   );
 };

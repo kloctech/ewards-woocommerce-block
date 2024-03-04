@@ -2,62 +2,57 @@ import "../styles/test/test.scss";
 
 const Test = () => {
   return (
-   <>
-    <div class="container text-center">
-    <div class="row">
-        <div class="col-sm-8">
-        <div class="row g-2">
-            <div class="col-md">
-                <div class="form-floating">
-                <select class="form-select" id="floatingSelectGrid">
+    <>
+      <div className="container text-center">
+        <div className="row">
+          <div className="col-sm-8">
+            <div className="row g-2">
+              <div className="col-md">
+                <div className="form-floating">
+                  {/* <select className="form-select" id="floatingSelectGrid">
                     <option selected></option>
-                    <option value="91">91</option>
-                </select>
-                <label for="floatingSelectGrid">Country</label>
+                    <option value="91" style={{width:"auto"}}>91</option>
+                  </select> */}
+                 <input type="email" className="form-control" id="floatingInputGrid" placeholder="name@example.com" value="91" style={{width: "20%",textAlign:'center'}}/>
+                  {/* <label htmlFor="floatingSelectGrid">Country</label> */}
                 </div>
-            </div>
-            <div class="col-md">
-                <div class="form-floating">
-                <input type="email" class="form-control" id="floatingInputGrid" placeholder="name@example.com" value=""/>
-                <label for="floatingInputGrid">Email address</label>
+              </div>
+              <div className="col-md">
+                <div className="form-floating">
+                  <input type="email" className="form-control" id="floatingInputGrid" placeholder="name@example.com" value="" style={{width: "100%",marginLeft:'-310px'}}/>
+                  <label  style = {{textAlign:'center',marginLeft:'-310px'}}htmlFor="floatingInputGrid">Email address</label>
                 </div>
+              </div>
             </div>
-            </div>
-        </div>
-        <div class="col-sm-4">
-        <button type="button" class="btn btn-primary" >Dark</button>
-        <div class="input-group mb-3">
-            <div class="input-group-text">
-                {/* <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input"/> */}
-                <div class="form-floating">
-                <select class="form-select" id="floatingSelectGrid">
+          </div>
+          <div className="col-sm-4">
+            <button type="button" className="btn btn-primary" >Dark</button>
+            <div className="input-group mb-3">
+              <div className="input-group-text">
+                <div className="form-floating">
+                  <select className="form-select" id="floatingSelectGrid">
                     <option selected>Open this select menu</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
                     <option value="3">Three</option>
-                </select>
-                <label for="floatingSelectGrid">Works with selects</label>
+                  </select>
+                  <label htmlFor="floatingSelectGrid">Works with selects</label>
                 </div>
-            </div>
-            <input type="text" class="form-control" aria-label="Text input with checkbox"/>
+              </div>
+              <input type="text" className="form-control" aria-label="Text input with checkbox"/>
             </div>
 
-            <div class="input-group">
-            <div class="input-group-text">
-                <input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input"/>
+            <div className="input-group">
+              <div className="input-group-text">
+                <input className="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input"/>
+              </div>
+              <input type="text" className="form-control" aria-label="Text input with radio button"/>
             </div>
-            <input type="text" class="form-control" aria-label="Text input with radio button"/>
-            </div>
+          </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm">col-sm</div>
-        <div class="col-sm">col-sm</div>
-        <div class="col-sm">col-sm</div>
-    </div>
-    </div>
-   </>
+      </div>
+    </>
   )
 }
 
-export default Test
+export default Test;

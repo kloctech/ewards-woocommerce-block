@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import '../styles/main.scss'
 import AvailableCoupons from './available-coupons';
+
 const VerifyOtp = ({mobileNumber,selectedCountry, otpSuccessMessage}) => {
   const [successMessage,setSuccessMessage] = useState("")
   const [errorMessage,setErrorMessage] = useState("")
@@ -42,9 +43,11 @@ const [couponData,setCouponData]  = useState("")
   const handleotpInputBlur = () => {
     setNoOtpMessage(!otp);
   };
+
   const handleotpInputClick = () => {
     document.getElementById('otp-lable').classList.add('focused');
   };
+
   const handlegetloyaypoints =async (event) => {
      event.preventDefault();
     if (   otp.length !== 8) {
@@ -75,13 +78,14 @@ const [couponData,setCouponData]  = useState("")
           setShowCoupons(true);  
           setSuccessMessage("");
          setOtpForm(false)
+         setShowResendOtp(true)
         });
     }
   };
   return (
     <>
       { otpSuccessMessage && (
-        <form disabled={otpForm} onSubmit={handlegetloyaypoints} style={{display:'flex',marginBottom:'0px',width:'100%'}}>
+        <form  onSubmit={handlegetloyaypoints} style={{display:'flex',marginBottom:'0px',width:'100%'}}>
           <div>
             <div className= {!successMessage || !otpForm? "mobile-otp-container" :"mobile-otp-container-blur"}>
               <div className={`wc-block-components-text-input ${noOtpMessage ? 'has-error' : ''}`}>
@@ -102,9 +106,9 @@ const [couponData,setCouponData]  = useState("")
                 />
               </div>
               <div className='otpcontainer'>
-                <button type="submit" className={ otpForm ? "button-element-disabled  otp-send-button" :"button-element-able otp-send-button"}
+                <button  disabled={otpForm} type="submit" className={ otpForm ? "button-element-disabled  otp-send-button" :"button-element-able otp-send-button"}
  >
-                  <span disabled={otpForm} class="">Verify OTP</span>
+                  <span  className="wc-block-components-button__text">Verify OTP</span>
                 </button>
               </div>
             </div>

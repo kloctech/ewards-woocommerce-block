@@ -79,7 +79,7 @@ const receiveCouponPoints = (points) => {
  
   return (
     <div>
-      {isLoading ? (
+      {!couponData? (
         <Loader />
       ) : (
         <>

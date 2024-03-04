@@ -8,7 +8,7 @@ a {
 // $primary: #900;
 // $enable-shadows: true;
 // $prefix: "mo-";
-
+// $primary:red;
 // Required Bootstrap imports
 @import "../../../node_modules/bootstrap/scss/variables";
 @import "../../../node_modules/bootstrap/scss/variables-dark";
@@ -21,5 +21,5 @@ a {
 @import "../../../node_modules/bootstrap/scss/button-group";
 @import "../../../node_modules/bootstrap/scss/containers";
 // @import "../../../node_modules/bootstrap/scss/butto";
-// @import "../../../node_modules/bootstrap/scss/helpers";
+//  @import "../../../node_modules/bootstrap/scss/helpers";
 @import "../../../node_modules/bootstrap/scss/grid";
