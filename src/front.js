@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-// import CouponsHandler from './components';
 import Index from './components';
 
 window.addEventListener('DOMContentLoaded', () => {

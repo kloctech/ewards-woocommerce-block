@@ -16,10 +16,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 
-function CouponsHandler() {
+function CouponsHandler(data) {
   const [cartValue, setCartValue] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
+  const [primaryColor, setPrimaryColor] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+  const [secondayColor, setSecondaryColor] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+  const [font, setFont] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
   const [storeUrl, setStoreUrl] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(window.location.origin);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    setPrimaryColor(data.attributes.primaryColor);
+    setSecondaryColor(data.attributes.secondayColor);
+    setFont(data.attributes.font);
     const fetchCartValue = () => {
       const cartValueElement = document.querySelector(".wc-block-components-totals-item__value");
       if (cartValueElement) {
@@ -34,7 +40,10 @@ function CouponsHandler() {
     height: "95vh",
     border: "none"
   };
-  const src = `https://cd1d-2401-4900-4bbe-de2b-b00b-3253-bfc3-9b2f.ngrok-free.app?cart=${encodeURIComponent(cartValue)}&storeUrl=${storeUrl}`;
+  // &font=${data.attributes.font}&primaryColor=${data.attributes.primaryColor}&secondayColor=${data.attributes.secondayColor}
+  // debugger
+  const src = `https://7712-106-51-177-195.ngrok-free.app/?cart=${encodeURIComponent(cartValue)}&font=${font}&primaryColor=${primaryColor}&secondayColor=${secondayColor}&storeUrl=${storeUrl}`;
+  console.log(src);
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("iframe", {
     src: src,
     style: containerStyle,
@@ -147,8 +156,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-// import CouponsHandler from './components';
 
 window.addEventListener('DOMContentLoaded', () => {
   const cards = document.querySelectorAll('.mt-block-user-card-wrapper');

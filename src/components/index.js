@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from "react";
-export default function CouponsHandler() {
+
+export default function CouponsHandler(data) {
   const [cartValue, setCartValue] = useState("");
+  const [ primaryColor, setPrimaryColor ] = useState( '' );
+  const [ secondayColor, setSecondaryColor ] = useState( '' );
+  const [ font, setFont ] = useState( '' );
   const [storeUrl, setStoreUrl] = useState(window.location.origin);
+
   useEffect(() => {
+    setPrimaryColor(data.attributes.primaryColor)
+    setSecondaryColor(data.attributes.secondayColor)
+    setFont(data.attributes.font)
     const fetchCartValue = () => {
       const cartValueElement = document.querySelector(".wc-block-components-totals-item__value");
       if (cartValueElement) {
@@ -17,6 +25,9 @@ export default function CouponsHandler() {
     height: "95vh",
     border: "none",
   };
-  const src = `https://cd1d-2401-4900-4bbe-de2b-b00b-3253-bfc3-9b2f.ngrok-free.app?cart=${encodeURIComponent(cartValue)}&storeUrl=${storeUrl}`;
+  // &font=${data.attributes.font}&primaryColor=${data.attributes.primaryColor}&secondayColor=${data.attributes.secondayColor}
+  // debugger
+  const src = `https://7712-106-51-177-195.ngrok-free.app/?cart=${encodeURIComponent(cartValue)}&font=${font}&primaryColor=${primaryColor}&secondayColor=${secondayColor}&storeUrl=${storeUrl}`;
+  console.log(src);
   return <iframe src={src} style={containerStyle} title="External Content" />;
 }
