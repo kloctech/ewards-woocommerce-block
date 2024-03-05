@@ -44,7 +44,7 @@ function test_block_front_scipts(){
         "PRDOUCTION_URL" => "https://f1b2-106-51-79-143.ngrok-free.app"
     ));
     // wp_enqueue_style('test-block-style-front', plugin_dir_url(__FILE__) . 'node_modules/@wordpress/components/build-style/style.css');
-    wp_enqueue_style('test-block-style-front-v2', plugin_dir_url(__FILE__) . 'build/front.css');
+    // wp_enqueue_style('test-block-style-front-v2', plugin_dir_url(__FILE__) . 'build/front.css');
     // wp_enqueue_style('test-block-style-front-v2', plugin_dir_url(__FILE__) . 'build/style.css');
 }
 /**

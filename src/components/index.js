@@ -25,9 +25,6 @@ export default function CouponsHandler(data) {
     height: "95vh",
     border: "none",
   };
-  // &font=${data.attributes.font}&primaryColor=${data.attributes.primaryColor}&secondayColor=${data.attributes.secondayColor}
-  // debugger
-  const src = `https://7712-106-51-177-195.ngrok-free.app/?cart=${encodeURIComponent(cartValue)}&font=${font}&primaryColor=${primaryColor}&secondayColor=${secondayColor}&storeUrl=${storeUrl}`;
-  console.log(src);
+  const src = `https://7712-106-51-177-195.ngrok-free.app/?cart=${encodeURIComponent(cartValue)}&font=${encodeURIComponent(font)}&primaryColor=${encodeURIComponent(primaryColor)}&secondaryColor=${encodeURIComponent(secondayColor)}&storeUrl=${encodeURIComponent(storeUrl)}`;
   return <iframe src={src} style={containerStyle} title="External Content" />;
 }
